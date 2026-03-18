@@ -39,7 +39,7 @@
 
 ---
 
-#### `rating_light.js`
+#### `rating_light.js` в вручную надо редактировать и перезаливать, ключ вставить від  var omdb_api_key = ' ВСТАВИТИ СВІЙ OMDB API KEY';
 [https://rex4lon.github.io/rating_light.js](https://rex4lon.github.io/rating_light.js)
 
 Підтягує рейтинги Rotten Tomatoes та Metacritic через OMDb API. Відображає додаткові блоки поряд з IMDb/KP.
@@ -74,7 +74,18 @@
 
 ---
 
-#### `maxsm_ratings_mod.js`
+#### `maxsm_ratings_mod.js` в вручную надо редактировать и перезаливать, ключ вставить від можно использовать одиночный ключ или массив ключей, после получения API ключей передайте их как массивы через:
+    window.RATINGS_PLUGIN_TOKENS && window.RATINGS_PLUGIN_TOKENS.OMDB_API_KEYS
+Или просто введите ниже в коде плагина:
+    var OMDB_API_KEYS = (window.RATINGS_PLUGIN_TOKENS && window.RATINGS_PLUGIN_TOKENS.OMDB_API_KEYS) || ['YOU_KEY']; // api ключи массивом
+    var KP_API_KEYS   = (window.RATINGS_PLUGIN_TOKENS && window.RATINGS_PLUGIN_TOKENS.KP_API_KEYS)   || ['YOU_KEY']; // api ключи массивом
+
+Для получения данных о качестве используется jacred парсер, по умолчанию плагин настроен на получение адреса и ключа вашего введеного jacred,
+вы можете изменить это в переменных:
+    var JACRED_PROTOCOL = 'https://'; // Протокол JacRed
+    var JACRED_URL = Lampa.Storage.get('jackett_url'); // Адрес JacRed для получения информации о карточках без протокола (jacred.xyz)
+    var JACRED_API_KEY = Lampa.Storage.get('jackett_key'); // api ключ JacRed
+
 [https://rex4lon.github.io/maxsm_ratings_mod.js](https://rex4lon.github.io/maxsm_ratings_mod.js)
 
 Додає якість разом з рейтингами. Використовує КіноПошук (kinopoiskapiunofficial.tech), Metacritic/Tomatoes через OMDB, якість через Jacred.
