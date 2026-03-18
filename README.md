@@ -300,7 +300,7 @@ var KP_API_KEYS   = (window.RATINGS_PLUGIN_TOKENS && window.RATINGS_PLUGIN_TOKEN
 
 ---
 
-#### `anti-ru.js` Не рабочий
+#### `anti-ru.js` 
 [https://rex4lon.github.io/anti-ru.js](https://rex4lon.github.io/anti-ru.js)
 
 Фільтрує аудіодоріжки у плеєрі: **прибирає російськомовні треки** та автоматично обирає українську озвучку якщо є.
