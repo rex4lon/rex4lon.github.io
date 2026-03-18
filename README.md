@@ -400,20 +400,6 @@ var KP_API_KEYS   = (window.RATINGS_PLUGIN_TOKENS && window.RATINGS_PLUGIN_TOKEN
 
 ---
 
-#### `easytorrent` *(зовнішній плагін)*
-
-Переклад коду EasyTorrent із сторінкою вибору налаштувань.  
-Автор коду: **darkestclouds**
-
-| Версія | Посилання | Призначення |
-|--------|-----------|-------------|
-| Повна | [https://cevamnelampaplagin.github.io/plugins/easytorrent2.1.0.5.js](https://cevamnelampaplagin.github.io/plugins/easytorrent2.1.0.5.js) | Для потужних пристроїв |
-| Mini | [https://cevamnelampaplagin.github.io/plugins/easytorrent2.1.0.min.js](https://cevamnelampaplagin.github.io/plugins/easytorrent2.1.0.min.js) | Для старих TV / слабких пристроїв |
-
-> QR-код генерується лише на **lampa.mx**. На lampa.stream — тільки посилання.
-
----
-
 ## 📋 Повний список плагінів
 
 | Плагін | Посилання | Опис |
