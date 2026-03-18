@@ -1704,7 +1704,7 @@
             let hasUkrainianLanguage = false;
             if (data.language && data.language.items) {
                 const selectedUkrainian = data.language.items.find(item => 
-                    item.code && item.code.includes('ru') && item.checked === true
+                    item.code && item.code.includes('uk') && item.checked === true
                 );
                 hasUkrainianLanguage = !!selectedUkrainian;
             }
