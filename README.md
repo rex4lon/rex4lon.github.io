@@ -74,25 +74,21 @@
 
 ---
 
-#### `maxsm_ratings_mod.js` УВАГА (обов’язково прочитати перед використанням):
-
-Плагін не працює «з коробки» — треба відкрити в редакторі, вписати свої API‑ключі та перезалити файл на хостинг.
-
-OMDb (IMDb/Metacritic/Rotten Tomatoes) + KinoPoisk API — ключі передаються або через window.RATINGS_PLUGIN_TOKENS чи напряму в коді.
-
-Jacred для якості релізів — за замовчуванням бере з налаштувань Lampa, але для кастомного сервера треба редагувати змінні в коді.
-
-Після редагування ключів — збережіть і перезалийте оновлений .js файл.
-
+#### `maxsm_ratings_mod.js`
 [https://rex4lon.github.io/maxsm_ratings_mod.js](https://rex4lon.github.io/maxsm_ratings_mod.js)
 
-Додає якість разом з рейтингами. Використовує КіноПошук (kinopoiskapiunofficial.tech), Metacritic/Tomatoes через OMDB, якість через Jacred.
+**УВАГА (обов’язково прочитати перед використанням):**
 
-```js
-var OMDB_API_KEYS = (window.RATINGS_PLUGIN_TOKENS && window.RATINGS_PLUGIN_TOKENS.OMDB_API_KEYS) || ['YOUR_KEY'];
-var KP_API_KEYS   = (window.RATINGS_PLUGIN_TOKENS && window.RATINGS_PLUGIN_TOKENS.KP_API_KEYS)   || ['YOUR_KEY'];
-```
-> ⚠️ Потребує API-ключів **KinoPoisk** та **OMDb**
+Плагін не працює «з коробки» — треба **відкрити в редакторі, вписати свої API‑ключі та перезалити файл** на хостинг.
+
+- **OMDb** (IMDb/Metacritic/Rotten Tomatoes) + **KinoPoisk API** — ключі через `window.RATINGS_PLUGIN_TOKENS` або напряму в коді
+- **Jacred** для якості — бере з налаштувань Lampa, для кастомного сервера редагуйте змінні в коді
+- Після редагування — **збережіть і перезалийте** оновлений `.js` файл
+
+Додає якість разом з рейтингами: КіноПошук, Metacritic/Tomatoes, Jacred-парсер.
+
+> Без власних ключів рейтинги та якість не відображатимуться
+
 
 ---
 
