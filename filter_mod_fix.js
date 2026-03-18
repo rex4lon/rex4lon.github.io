@@ -83,7 +83,7 @@
             ]
         };
         
-        // Языки с добавлением пункта "Любой" первым элементом
+        // Мови з додаванням пункту "Будь-яка" першим елементом
         data.language = {
             title: '#{title_language}',
             items: [
@@ -169,7 +169,7 @@
             ]
         };
         
-        // Жанры для фильмов с добавлением пункта "Любой" первым элементом
+        // Жанри для фільмів з додаванням пункту "Будь-який" першим елементом
         data.genres_movie = {
             title: '#{title_genre}',
             items: [
@@ -199,7 +199,7 @@
             ]
         };
         
-        // Жанры для сериалов с добавлением пункта "Любой" первым элементом
+        // Жанри для серіалів з додаванням пункту "Будь-який" першим елементом
         data.genres_tv = {
             title: '#{title_genre}',
             items: [
@@ -369,37 +369,37 @@
             if (index > 0) i.checkbox = true;
         });
         
-// ---- БЫСТРЫЕ ПРЕСЕТЫ ----
+// ---- ШВИДКІ ПРЕСЕТИ ----
         
 /**
- * Пресеты фильтров
+ * Пресети фільтрів
  */
 	const presets = {
     // 1. Вечерный просмотр
     'evening': {
         name: 'preset_evening',
         apply: function() {
-            // Тип: фильмы
+            // Тип: фільми
             data.type.items.forEach(item => item.selected = false);
-            data.type.items[0].selected = true; // Фильмы
+            data.type.items[0].selected = true; // Фільми
             
-            // Рейтинг: 6.5+ (ближайший - 6+)
+            // Рейтинг: 6.5+ (найближчий - 6+)
             data.rating.items.forEach(item => item.selected = false);
             //data.rating.items[2].selected = true; // 6+
             
-            // Жанры: Драма, Комедия, Мелодрама
+            // Жанри: Драма, Комедія, Мелодрама
             resetGenres();
             const dramaId = 18; // Драма
-            const comedyId = 35; // Комедия
+            const comedyId = 35; // Комедія
             const romanceId = 10749; // Мелодрама
             
             setMovieGenre(dramaId, true);
             setMovieGenre(comedyId, true);
             setMovieGenre(romanceId, true);
             
-            // Сортировка: В топе
+            // Сортування: За популярністю
             data.sort.items.forEach(item => item.selected = false);
-            data.sort.items[1].selected = true; // В топе
+            data.sort.items[1].selected = true; // За популярністю
             
             data.year.items.forEach(item => item.selected = false);
             data.quality.items.forEach(item => item.selected = false);
@@ -416,22 +416,22 @@
         }
     },
     
-    // 2. Семейный вечер
+    // 2. Сімейний вечір
     'family': {
         name: 'preset_family',
         apply: function() {
-            // Тип: фильмы или мультфильмы
+            // Тип: фільми або мультфільми
             data.type.items.forEach(item => item.selected = false);
             data.type.items[0].selected = true;
             
-            // Возрастной рейтинг: 0-12
+            // Віковий рейтинг: 0-12
             data.pgrating.items.forEach(item => item.selected = false);
             data.pgrating.items[3].selected = true;
             
-            // Жанры: Семейный, Мультфильм, Приключения
+            // Жанри: Сімейний, Мультфільм, Пригоди
             resetGenres();
-            const familyId = 10751; // Семейный
-            //const adventureId = 12; // Приключения
+            const familyId = 10751; // Сімейний
+            //const adventureId = 12; // Пригоди
             
             setMovieGenre(familyId, true);
             //setMovieGenre(adventureId, true);
@@ -440,9 +440,9 @@
             data.rating.items.forEach(item => item.selected = false);
             //data.rating.items[2].selected = true; // 6+
             
-            // Сортировка: В топе
+            // Сортування: За популярністю
             data.sort.items.forEach(item => item.selected = false);
-            data.sort.items[1].selected = true; // В топе
+            data.sort.items[1].selected = true; // За популярністю
             
             data.year.items.forEach(item => item.selected = false);
             
@@ -452,18 +452,18 @@
         }
     },
     
-    // 3. Экшен-марафон
+    // 3. Екшн-марафон
     'action': {
         name: 'preset_action',
         apply: function() {
-            // Тип: фильмы
+            // Тип: фільми
             data.type.items.forEach(item => item.selected = false);
-            data.type.items[0].selected = true; // Фильмы
+            data.type.items[0].selected = true; // Фільми
             
-            // Жанры: Боевик, Приключения, Фантастика
+            // Жанри: Бойовик, Пригоди, Фантастика
             resetGenres();
-            const actionId = 28; // Боевик
-            const adventureId = 12; // Приключения
+            const actionId = 28; // Бойовик
+            const adventureId = 12; // Пригоди
             const scifiId = 878; // Фантастика
             
             setMovieGenre(actionId, true);
@@ -474,9 +474,9 @@
             data.rating.items.forEach(item => item.selected = false);
             //data.rating.items[2].selected = true; // 6+
             
-            // Сортировка: В топе
+            // Сортування: За популярністю
             data.sort.items.forEach(item => item.selected = false);
-            data.sort.items[1].selected = true; // В топе
+            data.sort.items[1].selected = true; // За популярністю
             
             data.year.items.forEach(item => item.selected = false);
             
@@ -486,35 +486,35 @@
         }
     },
     
-    // 4. Романтическое кино
+    // 4. Романтичне кіно
     'romance': {
         name: 'preset_romance',
         apply: function() {
-            // Тип: фильмы
+            // Тип: фільми
             data.type.items.forEach(item => item.selected = false);
-            data.type.items[0].selected = true; // Фильмы
+            data.type.items[0].selected = true; // Фільми
             
-            // Жанры: Мелодрама, Комедия
+            // Жанри: Мелодрама, Комедія
             resetGenres();
             const romanceId = 10749; // Мелодрама
-            //const comedyId = 35; // Комедия
+            //const comedyId = 35; // Комедія
             
             setMovieGenre(romanceId, true);
             //setMovieGenre(comedyId, true);
             
-            // Рейтинг: 6.5+ (ближайший - 6+)
+            // Рейтинг: 6.5+ (найближчий - 6+)
             //data.rating.items.forEach(item => item.selected = false);
             //data.rating.items[2].selected = true; // 6+
             
-            // Языки: RU, EN, FR
+            // Мови: UK, EN, FR
             resetLanguages();
             setLanguage('ru', true);
             setLanguage('en', true);
             setLanguage('fr', true);
             
-            // Сортировка: В топе
+            // Сортування: За популярністю
             data.sort.items.forEach(item => item.selected = false);
-            data.sort.items[2].selected = true; // В топе
+            data.sort.items[2].selected = true; // За рейтингом
             
             data.year.items.forEach(item => item.selected = false);
             data.quality.items.forEach(item => item.selected = false);
@@ -523,13 +523,13 @@
         }
     },
     
-    // 5. Только шедевры
+    // 5. Тільки шедеври
     'masterpieces': {
         name: 'preset_masterpieces',
         apply: function() {
-            // Тип: фильмы
+            // Тип: фільми
             data.type.items.forEach(item => item.selected = false);
-            data.type.items[0].selected = true; // Фильмы
+            data.type.items[0].selected = true; // Фільми
             
             resetGenres();
             
@@ -537,9 +537,9 @@
             data.rating.items.forEach(item => item.selected = false);
             data.rating.items[1].selected = true; // 8+
             
-            // Сортировка: В топе
+            // Сортування: За популярністю
             data.sort.items.forEach(item => item.selected = false);
-            data.sort.items[2].selected = true; // В топе
+            data.sort.items[2].selected = true; // За рейтингом
             
             data.year.items.forEach(item => item.selected = false);
             data.pgrating.items.forEach(item => item.selected = false);
@@ -557,18 +557,18 @@
     
 	
 	
-    // 6. Новинки высокого качества
+    // 6. Новинки високої якості
     'new_hd': {
         name: 'preset_new_hd',
         apply: function() {
-            // Тип: фильмы
+            // Тип: фільми
             data.type.items.forEach(item => item.selected = false);
-            data.type.items[0].selected = true; // Фильмы
+            data.type.items[0].selected = true; // Фільми
             
             resetGenres();
             data.pgrating.items.forEach(item => item.selected = false);
             
-            // Год: текущий и предыдущий
+            // Рік: поточний та попередній
             data.year.items.forEach(item => item.selected = false);
             const currentYear = new Date().getFullYear();
             const currentYearIndex = data.year.items.findIndex(item => 
@@ -576,19 +576,19 @@
             );
             if (currentYearIndex !== -1) data.year.items[currentYearIndex].selected = true;
             
-            // Рейтинг: 7+ (ближайший - 6+)
+            // Рейтинг: 7+ (найближчий - 6+)
             data.rating.items.forEach(item => item.selected = false);
             //data.rating.items[2].selected = true; // 6+
             
-            // Качество: HD/UHD
+            // Якість: HD/UHD
             if (data.quality.items.length > 1) {
                 data.quality.items.forEach(item => item.selected = false);
-                data.quality.items[1].selected = true; // Высокое качество
+                data.quality.items[1].selected = true; // Висока якість
             }
             
-			// Сортировка: В топе
+			// Сортування: За популярністю
             data.sort.items.forEach(item => item.selected = false);
-            data.sort.items[3].selected = true; // В топе
+            data.sort.items[3].selected = true; // За датою
 			
             resetLanguages();
         }
@@ -596,31 +596,31 @@
     
     
     
-    // 8. Ужасы и триллеры
+    // 8. Жахи та трилери
     'horror': {
         name: 'preset_horror',
         apply: function() {
-            // Тип: фильмы
+            // Тип: фільми
             data.type.items.forEach(item => item.selected = false);
-            data.type.items[0].selected = true; // Фильмы
+            data.type.items[0].selected = true; // Фільми
             
-            // Жанры: Ужасы, Триллер, Детектив
+            // Жанри: Жахи, Трилер, Детектив
             resetGenres();
-            const horrorId = 27; // Ужасы
-            const thrillerId = 53; // Триллер
+            const horrorId = 27; // Жахи
+            const thrillerId = 53; // Трилер
            // const mysteryId = 9648; // Детектив
             
             setMovieGenre(horrorId, true);
             setMovieGenre(thrillerId, true);
             //setMovieGenre(mysteryId, true);
             
-            // Рейтинг: 5.5+ (ближайший - 6+ или 4+)
+            // Рейтинг: 5.5+ (найближчий - 6+ або 4+)
             data.rating.items.forEach(item => item.selected = false);
-            //data.rating.items[3].selected = true; // 4+ (т.к. для ужасов оценки часто занижены)
+            //data.rating.items[3].selected = true; // 4+ (бо для жахів оцінки часто занижені)
             
-            // Сортировка: В топе
+            // Сортування: За популярністю
             data.sort.items.forEach(item => item.selected = false);
-            data.sort.items[1].selected = true; // В топе
+            data.sort.items[1].selected = true; // За популярністю
             
             data.year.items.forEach(item => item.selected = false);
             data.pgrating.items.forEach(item => item.selected = false);
@@ -629,29 +629,29 @@
         }
     },
     
-    // 9. Научная фантастика
+    // 9. Наукова фантастика
     'scifi': {
         name: 'preset_scifi',
         apply: function() {
-            // Тип: фильмы
+            // Тип: фільми
             data.type.items.forEach(item => item.selected = false);
-            data.type.items[0].selected = true; // Фильмы
+            data.type.items[0].selected = true; // Фільми
             
-            // Жанры: Фантастика, Фэнтези
+            // Жанри: Фантастика, Фентезі
             resetGenres();
             const scifiId = 878; // Фантастика
-            const fantasyId = 14; // Фэнтези
+            const fantasyId = 14; // Фентезі
             
             setMovieGenre(scifiId, true);
             setMovieGenre(fantasyId, true);
             
-            // Рейтинг: 6.5+ (ближайший - 6+)
+            // Рейтинг: 6.5+ (найближчий - 6+)
             data.rating.items.forEach(item => item.selected = false);
             //data.rating.items[2].selected = true; // 6+
             
-            // Сортировка: В топе
+            // Сортування: За популярністю
             data.sort.items.forEach(item => item.selected = false);
-            data.sort.items[1].selected = true; // В топе
+            data.sort.items[1].selected = true; // За популярністю
             
             data.year.items.forEach(item => item.selected = false);
             data.pgrating.items.forEach(item => item.selected = false);
@@ -667,17 +667,17 @@
             
             resetGenres();
             
-            // Тип: фильмы
+            // Тип: фільми
             data.type.items.forEach(item => item.selected = false);
-            data.type.items[0].selected = true; // Фильмы
+            data.type.items[0].selected = true; // Фільми
             
-            // Язык: UK (украинский)
+            // Мова: UK (українська)
             resetLanguages();
             setLanguage('uk', true);
             
-            // Сортировка: В топе
+            // Сортування: За популярністю
             data.sort.items.forEach(item => item.selected = false);
-            data.sort.items[2].selected = true; // В топе
+            data.sort.items[2].selected = true; // За рейтингом
             
             data.year.items.forEach(item => item.selected = false);
             data.pgrating.items.forEach(item => item.selected = false);
@@ -686,18 +686,18 @@
         }
     },
     
-    // 12. Азиатское кино
+    // 12. Азійське кіно
     'asian': {
         name: 'preset_asian',
         apply: function() {
             
             resetGenres();
             
-            // Тип: фильмы
+            // Тип: фільми
             data.type.items.forEach(item => item.selected = false);
-            data.type.items[0].selected = true; // Фильмы
+            data.type.items[0].selected = true; // Фільми
             
-            // Языки: KO (корейский), JA (японский), ZH (китайский), ID (индонезийский), TH (тайский)
+            // Мови: KO (корейська), JA (японська), ZH (китайська), ID (індонезійська), TH (тайська)
             resetLanguages();
             setLanguage('ko', true);
             setLanguage('ja', true);
@@ -705,9 +705,9 @@
             setLanguage('id', true);
             setLanguage('th', true);
             
-            // Сортировка: В топе
+            // Сортування: За популярністю
             data.sort.items.forEach(item => item.selected = false);
-            data.sort.items[2].selected = true; // В топе
+            data.sort.items[2].selected = true; // За рейтингом
             
             data.year.items.forEach(item => item.selected = false);
             data.pgrating.items.forEach(item => item.selected = false);
@@ -716,33 +716,33 @@
         }
     }
 };      
-        // ---- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ДЛЯ ПРЕСЕТОВ ----
+        // ---- ДОПОМІЖНІ ФУНКЦІЇ ДЛЯ ПРЕСЕТІВ ----
         
         /**
-         * Сброс всех жанров
+         * Скидання всіх жанрів
          */
         function resetGenres() {
-            // Сброс жанров фильмов
+            // Скидання жанрів фільмів
             data.genres_movie.items.forEach(item => {
                 if (item.checkbox) {
                     item.checked = false;
                 }
             });
             
-            // Сброс жанров сериалов
+            // Скидання жанрів серіалів
             data.genres_tv.items.forEach(item => {
                 if (item.checkbox) {
                     item.checked = false;
                 }
             });
             
-            // Установка "Любой" в false для жанров
+            // Встановлення "Будь-який" в false для жанрів
             data.genres_movie.items[0].checked = false;
             data.genres_tv.items[0].checked = false;
         }
         
         /**
-         * Установка жанра фильма
+         * Встановлення жанру фільму
          */
         function setMovieGenre(genreId, checked) {
             const genreItem = data.genres_movie.items.find(item => item.id === genreId);
@@ -752,7 +752,7 @@
         }
         
         /**
-         * Сброс всех языков
+         * Скидання всіх мов
          */
         function resetLanguages() {
             data.language.items.forEach(item => {
@@ -760,11 +760,11 @@
                     item.checked = false;
                 }
             });
-            data.language.items[0].checked = false; // "Любой"
+            data.language.items[0].checked = false; // "Будь-яка"
         }
         
         /**
-         * Установка языка
+         * Встановлення мови
          */
         function setLanguage(langCode, checked) {
             const langItem = data.language.items.find(item => item.code === langCode);
@@ -778,18 +778,18 @@
          */
         function applyPreset(presetKey) {
             if (presets[presetKey] && typeof presets[presetKey].apply === 'function') {
-                console.log(`Фильтр +: Применяем пресет ${presetKey}`);
+                console.log(`Фільтр +: Застосовуємо пресет ${presetKey}`);
                 
-                // Применяем настройки пресета
+                // Застосовуємо налаштування пресету
                 presets[presetKey].apply();
                 
-                // Обновляем подзаголовки
+                // Оновлюємо підзаголовки
                 for(var i in data) selected(data[i]);
                 
-                // Сохраняем настройки
+                // Зберігаємо налаштування
                 saveFilterSettings();
                 
-                // Показываем уведомление
+                // Показуємо повідомлення
                 if (window.Lampa.Noty) {
                     window.Lampa.Noty.show(
                         window.Lampa.Lang.translate('preset_applied') || 'Пресет применен', 
@@ -797,33 +797,33 @@
                     );
                 }
                 
-                // Возвращаемся в главное меню
+                // Повертаємось до головного меню
                 main();
             } else {
-                console.error(`Фильтр +: Пресет ${presetKey} не найден`);
+                console.error(`Фільтр +: Пресет ${presetKey} не знайдено`);
             }
         }
         
-        // ---- ПОЛЬЗОВАТЕЛЬСКИЕ ПРЕСЕТЫ ----
+        // ---- КОРИСТУВАЦЬКІ ПРЕСЕТИ ----
         
         /**
          * Сохранить пользовательский пресет
          */
         function saveUserPreset() {
-            // Проверяем наличие необходимых компонентов
+            // Перевіряємо наявність необхідних компонентів
             if (!window.Lampa.Modal || !window.Lampa.Input) {
-                console.error('Фильтр +: Отсутствуют необходимые компоненты (Modal, Input)');
+                console.error('Фільтр +: Відсутні необхідні компоненти (Modal, Input)');
                 if (window.Lampa.Noty) {
-                    window.Lampa.Noty.show('Не удалось открыть диалог сохранения', 2000);
+                    window.Lampa.Noty.show('Не вдалося відкрити діалог збереження', 2000);
                 }
                 return;
             }
             
-            // Запоминаем текущий контроллер для возврата
-            // Исправлено: используем статическое имя 'filter_plus' вместо Controller.active()
+            // Запам'ятовуємо поточний контролер для повернення
+            // Виправлено: використовуємо статичне ім'я 'filter_plus' вместо Controller.active()
             const previousController = 'filter_plus';
             
-            // Создаем модальное окно
+            // Створюємо модальне вікно
 			/*
             window.Lampa.Modal.open({
                 title: window.Lampa.Lang.translate('preset_save_title') || 'Сохранение пресета',
@@ -836,12 +836,12 @@
             });
             */
 			
-			// Загружаем существующие пресеты
+			// Завантажуємо наявні пресети
             const userPresets = getUserPresets();
 			
-			// Проверяем лимит
+			// Перевіряємо ліміт
             if (userPresets.length >= 10) {
-                // Превышен лимит, предлагаем удалить пресет
+                // Перевищено ліміт, пропонуємо видалити пресет
 						
 				if (window.Lampa.Noty) {
 					window.Lampa.Noty.show(
@@ -861,7 +861,7 @@
 			
 			
 			
-            // Добавляем клавиатуру для ввода текста
+            // Додаємо клавіатуру для введення тексту
             setTimeout(() => {
                 window.Lampa.Input.edit({
                     title: window.Lampa.Lang.translate('preset_save_desc') || 'Введите имя для нового пресета',
@@ -871,18 +871,18 @@
                     align: 'center',
                     keyboard: 'integrate'
                 }, (newValue) => {
-                    // Закрываем модальное окно
+                    // Закриваємо модальне вікно
                     //window.Lampa.Modal.close();
                     
                     if (!newValue || newValue.trim() === '') {
-                        // Пустое имя - показываем ошибку
+                        // Порожнє ім'я - показуємо помилку
                         if (window.Lampa.Noty) {
                             window.Lampa.Noty.show(
                                 window.Lampa.Lang.translate('preset_name_empty') || 'Имя пресета не может быть пустым', 
                                 2000
                             );
                         }
-                        // Исправлено: используем main() вместо Controller.toggle()
+                        // Виправлено: використовуємо main() замість Controller.toggle()
                         main();
                         return;
                     }
@@ -893,10 +893,10 @@
                     
                     
                     
-                    // Сохраняем новый пресет
+                    // Зберігаємо новий пресет
                     saveUserPresetData(presetName);
                     
-                    // Исправлено: используем main() вместо Controller.toggle()
+                    // Виправлено: використовуємо main() замість Controller.toggle()
                     main();
                 });
             }, 100);
@@ -916,14 +916,14 @@
                         3000
                     );
                 }
-                // Исправлено: используем main() вместо Controller.toggle()
+                // Виправлено: використовуємо main() замість Controller.toggle()
                 main();
                 return;
             }
             
-            // Сохраняем пресет
+            // Зберігаємо пресет
             saveUserPresetData(presetName);
-            // Исправлено: используем main() вместо Controller.toggle()
+            // Виправлено: використовуємо main() замість Controller.toggle()
             main();
         }
         
@@ -937,18 +937,18 @@
                 filters: {}
             };
             
-            // Сохраняем все текущие настройки фильтров
+            // Зберігаємо всі поточні налаштування фільтрів
             Object.keys(data).forEach(key => {
                 if (data[key].items && data[key].items.length > 0) {
                     presetData.filters[key] = {};
                     
-                    // Сохраняем радио-кнопки (selected)
+                    // Зберігаємо радіо-кнопки (selected)
                     const selectedIndex = data[key].items.findIndex(item => item.selected === true);
                     if (selectedIndex !== -1) {
                         presetData.filters[key].selectedIndex = selectedIndex;
                     }
                     
-                    // Сохраняем чекбоксы (checked)
+                    // Зберігаємо чекбокси (checked)
                     const hasCheckboxes = data[key].items.some(item => item.checkbox === true);
                     if (hasCheckboxes) {
                         presetData.filters[key].checkboxes = data[key].items.map(item => item.checked || false);
@@ -956,23 +956,23 @@
                 }
             });
             
-            // Загружаем существующие пресеты
+            // Завантажуємо наявні пресети
             const userPresets = getUserPresets();
             
-            // Проверяем, нет ли уже пресета с таким именем
+            // Перевіряємо, чи вже є пресет з таким ім'ям
             const existingIndex = userPresets.findIndex(p => p.name === presetName);
             if (existingIndex !== -1) {
                 // Заменяем существующий
                 userPresets[existingIndex] = presetData;
             } else {
-                // Добавляем новый
+                // Додаємо новий
                 userPresets.push(presetData);
             }
             
-            // Сохраняем в хранилище
+            // Зберігаємо у сховище
             window.Lampa.Storage.set('filterPlus_userPresets', userPresets);
             
-            // Показываем уведомление
+            // Показуємо повідомлення
             if (window.Lampa.Noty) {
                 const message = (window.Lampa.Lang.translate('preset_saved') || 'Пресет "%s" сохранен').replace('%s', presetName);
                 window.Lampa.Noty.show(message, 2000);
@@ -996,7 +996,7 @@
                 return;
             }
             
-            // Создаем список пресетов для меню
+            // Створюємо список пресетів для меню
             const presetItems = userPresets.map((preset, index) => {
                 // Форматируем дату создания
                 const date = new Date(preset.timestamp);
@@ -1009,7 +1009,7 @@
                 };
             });
             
-            // Добавляем пункт "Удалить пресет" в начало
+            // Додаємо пункт "Видалити пресет" на початок
             presetItems.unshift({
                 title: window.Lampa.Lang.translate('preset_delete') || '✖️ Удалить пресет',
                 deleteMenu: true
@@ -1021,10 +1021,10 @@
                 onBack: main,
                 onSelect: (a) => {
                     if (a.deleteMenu) {
-                        // Показываем меню удаления пресетов
+                        // Показуємо меню видалення пресетів
                         showDeletePresetMenu(main);
                     } else {
-                        // Загружаем выбранный пресет
+                        // Завантажуємо вибраний пресет
                         loadUserPreset(a.presetIndex);
                     }
                 }
@@ -1038,13 +1038,13 @@
             const userPresets = getUserPresets();
             
             if (presetIndex < 0 || presetIndex >= userPresets.length) {
-                console.error('Фильтр +: Неверный индекс пресета:', presetIndex);
+                console.error('Фільтр +: Невірний індекс пресету:', presetIndex);
                 return;
             }
             
             const presetData = userPresets[presetIndex];
             
-            console.log('Фильтр +: Загружаем пресет:', presetData.name);
+            console.log('Фільтр +: Завантажуємо пресет:', presetData.name);
             
             // Восстанавливаем настройки из пресета
             Object.keys(presetData.filters).forEach(key => {
@@ -1057,7 +1057,7 @@
                         if (selectedIndex >= 0 && selectedIndex < data[key].items.length) {
                             // Сбрасываем все selected
                             data[key].items.forEach(item => item.selected = false);
-                            // Устанавливаем сохраненный selected
+                            // Встановлюємо збережений selected
                             data[key].items[selectedIndex].selected = true;
                         }
                     }
@@ -1076,19 +1076,19 @@
                 }
             });
             
-            // Обновляем подзаголовки
+            // Оновлюємо підзаголовки
             for(var i in data) selected(data[i]);
             
-            // Сохраняем настройки
+            // Зберігаємо налаштування
             saveFilterSettings();
             
-            // Показываем уведомление
+            // Показуємо повідомлення
             if (window.Lampa.Noty) {
                 const message = (window.Lampa.Lang.translate('preset_loaded') || 'Пресет "%s" загружен').replace('%s', presetData.name);
                 window.Lampa.Noty.show(message, 2000);
             }
             
-            // Возвращаемся в главное меню
+            // Повертаємось до головного меню
             main();
         }
         
@@ -1110,7 +1110,7 @@
                 return;
             }
             
-            // Создаем список пресетов для удаления
+            // Створюємо список пресетів для видалення
             const deleteItems = userPresets.map((preset, index) => {
                 const date = new Date(preset.timestamp);
                 const dateStr = date.toLocaleDateString();
@@ -1128,10 +1128,10 @@
                 items: deleteItems,
                 onBack: onBackCallback || main,
                 onSelect: (a) => {
-                    // Удаляем выбранный пресет
+                    // Видаляємо вибраний пресет
                     deleteUserPreset(a.presetIndex);
                     if (onBackCallback) onBackCallback();
-                    // Исправлено: используем main() вместо Controller.toggle()
+                    // Виправлено: використовуємо main() замість Controller.toggle()
                     if (previousController) main();
                 }
             });
@@ -1144,19 +1144,19 @@
             const userPresets = getUserPresets();
             
             if (presetIndex < 0 || presetIndex >= userPresets.length) {
-                console.error('Фильтр +: Неверный индекс пресета для удаления:', presetIndex);
+                console.error('Фільтр +: Невірний індекс пресету для видалення:', presetIndex);
                 return;
             }
             
             const deletedPreset = userPresets[presetIndex];
             
-            // Удаляем пресет
+            // Видаляємо пресет
             userPresets.splice(presetIndex, 1);
             
-            // Сохраняем обновленный список
+            // Зберігаємо оновлений список
             window.Lampa.Storage.set('filterPlus_userPresets', userPresets);
             
-            // Показываем уведомление
+            // Показуємо повідомлення
             if (window.Lampa.Noty) {
                 const message = (window.Lampa.Lang.translate('preset_deleted') || 'Пресет "%s" удален').replace('%s', deletedPreset.name);
                 window.Lampa.Noty.show(message, 2000);
@@ -1227,8 +1227,8 @@
                     preset: 'scifi'
                 },
                 {
-                    title: window.Lampa.Lang.translate('preset_russian'),
-                    preset: 'russian'
+                    title: window.Lampa.Lang.translate('preset_ukrainian'),
+                    preset: 'ukrainian'
                 },
                 {
                     title: window.Lampa.Lang.translate('preset_asian'),
@@ -1263,7 +1263,7 @@
             try {
                 const state = {};
                 
-                // Сохраняем только выбранные индексы для радио-кнопок
+                // Зберігаємо лише вибрані індекси для радіо-кнопок
                 // и состояния чекбоксов
                 Object.keys(data).forEach(key => {
                     if (data[key].items && data[key].items.length > 0) {
@@ -1284,9 +1284,9 @@
                 });
                 
                 window.Lampa.Storage.set('filterPlus_settings', state);
-                console.log('Фильтр +: Настройки сохранены', state);
+                console.log('Фільтр +: Налаштування збережено', state);
             } catch (error) {
-                console.error('Фильтр +: Ошибка сохранения настроек:', error);
+                console.error('Фільтр +: Помилка збереження налаштувань:', error);
             }
         }
         
@@ -1299,11 +1299,11 @@
             try {
                 const state = window.Lampa.Storage.get('filterPlus_settings', null);
                 if (!state) {
-                    console.log('Фильтр +: Сохраненных настроек нет');
+                    console.log('Фільтр +: Збережених налаштувань немає');
                     return;
                 }
                 
-                console.log('Фильтр +: Восстанавливаем настройки', state);
+                console.log('Фільтр +: Відновлюємо налаштування', state);
                 
                 // Восстанавливаем радио-кнопки (selected)
                 if (state.radio) {
@@ -1313,7 +1313,7 @@
                             if (selectedIndex >= 0 && selectedIndex < data[key].items.length) {
                                 // Сбрасываем все selected
                                 data[key].items.forEach(item => item.selected = false);
-                                // Устанавливаем сохраненный selected
+                                // Встановлюємо збережений selected
                                 data[key].items[selectedIndex].selected = true;
                                 console.log(`Восстановлен ${key}: selected[${selectedIndex}]`);
                             }
@@ -1338,12 +1338,12 @@
                     });
                 }
                 
-                // Обновляем подзаголовки
+                // Оновлюємо підзаголовки
                 for(var i in data) selected(data[i]);
                 
-                console.log('Фильтр +: Настройки восстановлены');
+                console.log('Фільтр +: Налаштування відновлено');
             } catch (error) {
-                console.error('Фильтр +: Ошибка восстановления настроек:', error);
+                console.error('Фільтр +: Помилка відновлення налаштувань:', error);
             }
         }
         
@@ -1351,7 +1351,7 @@
          * Сброс всех фильтров к значениям по умолчанию
          */
         function resetAllFilters() {
-            console.log('Фильтр +: Сброс всех фильтров');
+            console.log('Фільтр +: Скидання всіх фільтрів');
             
             // Сбрасываем тип контента к первому пункту (фильмы)
             data.type.items.forEach((item, index) => {
@@ -1416,24 +1416,24 @@
                 }
             });
             
-            // Обновляем подзаголовки
+            // Оновлюємо підзаголовки
             for(var i in data) selected(data[i]);
             
-            // Удаляем сохраненные настройки
+            // Видаляємо збережені налаштування
             if (window.Lampa.Storage) {
                 window.Lampa.Storage.remove('filterPlus_settings');
-                console.log('Фильтр +: Настройки удалены из хранилища');
+                console.log('Фільтр +: Налаштування видалено зі сховища');
             }
             
-            // Сохраняем сброшенное состояние
+            // Зберігаємо скинутий стан
             saveFilterSettings();
             
-            // Показываем сообщение об успешном сбросе
+            // Показуємо повідомлення про успішне скидання
             if (window.Lampa.Noty) {
-                window.Lampa.Noty.show(window.Lampa.Lang.translate('filter_reset_success') || 'Фильтры сброшены', 2000);
+                window.Lampa.Noty.show(window.Lampa.Lang.translate('filter_reset_success') || 'Фільтри скинуто', 2000);
             }
             
-            // Возвращаемся в главное меню
+            // Повертаємось до головного меню
             main();
         }
         
@@ -1507,7 +1507,7 @@
             let genres   = [];
             let languages = [];
             
-            // Добавляем параметр сортировки для TMDB
+            // Додаємо параметр сортування для TMDB
             const selectedSort = data.sort.items.find(s=>s.selected && s.sort);
             if (selectedSort) {
                 let sortParam = selectedSort.sort;
@@ -1693,23 +1693,23 @@
                 function search(){
             window.Lampa.Controller.toggle('content');
 
-            // Проверяем, выбран ли возрастной рейтинг (кроме "Любой")
+            // Перевіряємо, чи вибрано віковий рейтинг (крім "Будь-який")
             let hasPGRating = false;
             if (data.pgrating && data.pgrating.items) {
                 const selectedPGRating = data.pgrating.items.find(item => item.selected);
                 hasPGRating = selectedPGRating && selectedPGRating.pg !== undefined;
             }
 
-            // Проверяем, выбран ли русский язык
-            let hasRussianLanguage = false;
+            // Перевіряємо, чи вибрана українська мова
+            let hasUkrainianLanguage = false;
             if (data.language && data.language.items) {
-                const selectedRussian = data.language.items.find(item => 
+                const selectedUkrainian = data.language.items.find(item => 
                     item.code && item.code.includes('ru') && item.checked === true
                 );
-                hasRussianLanguage = !!selectedRussian;
+                hasUkrainianLanguage = !!selectedUkrainian;
             }
 			
-			// Проверяем, выбрано ли высокое качество
+			// Перевіряємо, чи вибрана висока якість
             let hasHighQuality = false;
             if (data.quality && data.quality.items) {
                 const selectedQuality = data.quality.items.find(item => item.selected && item.uhd === true);
@@ -1718,25 +1718,25 @@
 
             // Определяем источник поиска:
             // 1. Если выбрано высокое качество -> CUB
-            // 2. Если выбран русский язык -> CUB
+            // 2. Якщо вибрана українська мова -> CUB
             // 3. Если выбран возрастной рейтинг (не "Любой") -> CUB
             // 4. В противном случае -> TMDB
             let source = 'tmdb'; // по умолчанию TMDB
             
             if (hasHighQuality) {
                 source = 'cub';
-                console.log('Фильтр +: Источник CUB выбран (высокое качество)');
-            } else if (hasRussianLanguage) {
+                console.log('Фільтр +: Джерело CUB вибрано (висока якість)');
+            } else if (hasUkrainianLanguage) {
                 source = 'cub';
-                console.log('Фильтр +: Источник CUB выбран (русский язык)');
+                console.log('Фільтр +: Джерело CUB вибрано (українська мова)');
             } else if (hasPGRating) {
                 source = 'cub';
-                console.log('Фильтр +: Источник CUB выбран (возрастной рейтинг)');
+                console.log('Фільтр +: Джерело CUB вибрано (віковий рейтинг)');
             } else {
-                console.log('Фильтр +: Источник TMDB выбран (по умолчанию)');
+                console.log('Фільтр +: Джерело TMDB вибрано (за замовчуванням)');
             }
     
-            console.log(`Фильтр +: Итоговый источник: ${source} (высокое качество: ${hasHighQuality}, русский: ${hasRussianLanguage}, возрастной рейтинг: ${hasPGRating})`);
+            console.log(`Фільтр +: Підсумкове джерело: ${source} (висока якість: ${hasHighQuality}, українська: ${hasUkrainianLanguage}, віковий рейтинг: ${hasPGRating})`);
     
             let query = source == 'cub' ? queryForCUB() : queryForTMDB();
 
@@ -1847,7 +1847,7 @@
                         });
                     }
                     
-                    // Обновляем подзаголовок и сохраняем
+                    // Оновлюємо підзаголовок та зберігаємо
                     selected(item);
                     main();
                 }
@@ -1858,11 +1858,11 @@
          * Запуск фильтра
          */
         function show(){
-            // Проверяем наличие всех зависимостей
+            // Перевіряємо наявність усіх залежностей
             if (!window.Lampa.Select || !window.Lampa.Controller || 
                 !window.Lampa.Activity || !window.Lampa.Lang || 
                 !window.Lampa.Storage) {
-                console.error('Фильтр +: Не все зависимости доступны');
+                console.error('Фільтр +: Не всі залежності доступні');
                 console.log('Доступны:', {
                     Select: !!window.Lampa.Select,
                     Controller: !!window.Lampa.Controller,
@@ -1872,7 +1872,7 @@
                 });
                 
                 if (window.Lampa.Noty) {
-                    window.Lampa.Noty.show('Фильтр временно недоступен', 3000);
+                    window.Lampa.Noty.show('Фільтр тимчасово недоступний', 3000);
                 }
                 return;
             }
@@ -1902,7 +1902,7 @@
         try {
             // Сначала проверяем только Lampa.Menu для добавления пункта
             if (!window.Lampa || !window.Lampa.Menu || typeof window.Lampa.Menu.addButton !== 'function') {
-                console.error('Фильтр +: Lampa.Menu.addButton не доступен');
+                console.error('Фільтр +: Lampa.Menu.addButton недоступний');
                 return false;
             }
             
@@ -2247,8 +2247,8 @@
                         cs: '🎌 Anime kolekce',
                         ro: '🎌 Colecție anime'
                     },
-                    preset_russian: {
-                        ru: '🇺🇦 Украинское кино',
+                    preset_ukrainian: {
+                        ru: '🇺🇦 Українське кіно',
                         en: '🇺🇦 Ukrainian cinema',
                         uk: '🇺🇦 Українське кіно',
                         be: '🇺🇦 Украінскае кіно',
@@ -2419,22 +2419,22 @@
                 });
             }
             
-            // Создаем иконку
+            // Створюємо іконку
             const iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">' +
                            '<path fill="currentColor" d="M14,12V19.88C14.04,20.18 13.94,20.5 13.71,20.71C13.32,21.1 12.69,21.1 12.3,20.71L10.29,18.7C10.06,18.47 9.96,18.16 10,17.88V12H9.97L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3H19C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L14.03,12H14Z"/>' +
                            '</svg>';
             
-            // Создаем функцию обертку, которая инициализирует модуль при первом вызове
+            // Створюємо функцію-обгортку, яка ініціалізує модуль при першому виклику
             let filterInitialized = false;
             
             function showFilter() {
-                console.log('Фильтр +: Запуск фильтра...');
+                console.log('Фільтр +: Запуск фільтру...');
                 
-                // Создаем модуль при первом вызове
+                // Створюємо модуль при першому виклику
                 if (!filterInitialized) {
-                    console.log('Фильтр +: Инициализация модуля...');
+                    console.log('Фільтр +: Ініціалізація модуля...');
                     
-                    // Проверяем все зависимости
+                    // Перевіряємо всі залежності
                     const deps = ['Select', 'Controller', 'Activity', 'Lang', 'Storage'];
                     const missingDeps = [];
                     
@@ -2445,27 +2445,27 @@
                     });
                     
                     if (missingDeps.length > 0) {
-                        console.error('Фильтр +: Отсутствуют зависимости:', missingDeps);
+                        console.error('Фільтр +: Відсутні залежності:', missingDeps);
                         if (window.Lampa.Noty) {
-                            window.Lampa.Noty.show('Фильтр: недостающие компоненты: ' + missingDeps.join(', '), 4000);
+                            window.Lampa.Noty.show('Фільтр: відсутні компоненти: ' + missingDeps.join(', '), 4000);
                         }
                         return;
                     }
                     
                     FilterPlusModule = createFilterModule();
                     filterInitialized = true;
-                    console.log('✅ Фильтр +: Модуль успешно инициализирован');
+                    console.log('✅ Фільтр +: Модуль успішно ініціалізовано');
                 }
                 
-                // Вызываем show из модуля
+                // Викликаємо show з модуля
                 if (FilterPlusModule && FilterPlusModule.show) {
                     FilterPlusModule.show();
                 } else {
-                    console.error('Фильтр +: Модуль не инициализирован');
+                    console.error('Фільтр +: Модуль не ініціалізовано');
                 }
             }
             
-            // Добавляем пункт в главное меню С УЧЕТОМ ПЕРЕВОДА
+            // Додаємо пункт до головного меню З УРАХУВАННЯМ ПЕРЕКЛАДУ
             const menuButton = window.Lampa.Menu.addButton(
                 iconSvg, 
                 window.Lampa.Lang.translate('menu_filter_plus'),
@@ -2476,14 +2476,14 @@
                 menuButton.addClass('filter-plus-button');
             }
             
-            // Также регистрируем глобально для вызова из других мест
+            // Також реєструємо глобально для виклику з інших місць
             window.Lampa.FilterPlus = { show: showFilter };
             
-            console.log('✅ Фильтр +: Пункт меню добавлен');
+            console.log('✅ Фільтр +: Пункт меню додано');
             return true;
             
         } catch (error) {
-            console.error('Фильтр +: Ошибка инициализации:', error);
+            console.error('Фільтр +: Помилка ініціалізації:', error);
             return false;
         }
     }
@@ -2493,29 +2493,29 @@
             // Официальный способ через Listener
             window.Lampa.Listener.follow('app', function(event) {
                 if (event.type === 'ready') {
-                    console.log('Фильтр +: Приложение готово, инициализируем...');
+                    console.log('Фільтр +: Застосунок готовий, ініціалізуємо...');
                     initPlugin();
                 }
             });
         } else if (window.appready) {
             // Если приложение уже готово
-            console.log('Фильтр +: Приложение уже готово, инициализируем...');
+            console.log('Фільтр +: Застосунок вже готовий, ініціалізуємо...');
             initPlugin();
         } else {
             // Fallback: ждем Lampa
             setTimeout(function() {
                 if (window.Lampa) {
-                    console.log('Фильтр +: Lampa загружена, инициализируем...');
+                    console.log('Фільтр +: Lampa завантажена, ініціалізуємо...');
                     initPlugin();
                 } else {
-                    console.log('Фильтр +: Ожидание загрузки Lampa...');
+                    console.log('Фільтр +: Очікування завантаження Lampa...');
                     setTimeout(startInitialization, 1000);
                 }
             }, 500);
         }
     }
     
-    // Запускаем
+    // Запускаємо
     startInitialization();
     
 
