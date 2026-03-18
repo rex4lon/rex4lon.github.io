@@ -98,7 +98,7 @@ var KP_API_KEYS   = (window.RATINGS_PLUGIN_TOKENS && window.RATINGS_PLUGIN_TOKEN
 
 ---
 
-#### `qualtorrUaleft.js`
+#### `qualtorrUaleft.js` Не рабочий, треба виправити парсер
 [https://rex4lon.github.io/qualtorrUaleft.js](https://rex4lon.github.io/qualtorrUaleft.js)
 
 Показує на сторінці фільму блок з інформацією про наявність 🇺🇦 роздачі через Jacred.
@@ -107,12 +107,25 @@ var KP_API_KEYS   = (window.RATINGS_PLUGIN_TOKENS && window.RATINGS_PLUGIN_TOKEN
 
 ---
 
-#### `qualUaIn_2.js`
+#### `qualUaIn_2.js` Не рабочий, треба виправити парсер
 [https://rex4lon.github.io/qualUaIn_2.js](https://rex4lon.github.io/qualUaIn_2.js)
 
 Аналог `qualtorrUaleft.js`, але більш просунутий. Відображає якість **inline** у рядку рейтингів (`.full-start-new__rate-line`).
 
 **Відмінності:** кеш 72 год, детальне логування з таймінгами, багатостратегійний пошук з fallback, поліфіли для старих TV (`AbortController`, `performance.now`, `padStart`)
+
+---
+---
+
+#### `qual9ua.js` Не рабочий, треба виправити парсер
+[https://rex4lon.github.io/qual9ua.js](https://rex4lon.github.io/qual9ua.js)
+
+Просунутий інлайн-плагін 🇺🇦 якості (UA Ultra). Шукає українські роздачі через Jacred, показує якість прямо в рядку рейтингу як кольоровий бейдж `4K/1080p/720p/SD`.
+
+Має спрощений набір проксі, таймаут 10 c, логування в консоль, поліфіли для AbortController та performance.now — оптимізований для TV.
+
+
+### 🎬 Перегляд та навігація
 
 ---
 
