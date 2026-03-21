@@ -5,7 +5,7 @@
     var STORAGE_ACTIVE  = 'ps_active';
 
     var DEFAULT_PARSERS = [
-        { name: 'NovaNet Jacred',       url: 'jacred.mooo.com:888',          apikey: 'jacred93ua', type: 'jackett' },
+        { name: 'NovaNet Jacred',       url: 'jacred.mooo.com:888',          apikey: '', type: 'jackett' },
         { name: 'NovaNet Jackett',      url: 'jackett.pro.mooo.com:889',     apikey: 'jackettpro1703', type: 'jackett' },
     ];
 
