@@ -17,7 +17,6 @@
 
   const _d = (s) => atob(s);
 
-  // в select только нумерация, без адресов
   const labels = _s.reduce((acc, _, i) => {
     acc[i + 1] = `Сервер ${i + 1}`;
     return acc;
@@ -62,11 +61,10 @@
     $('.selectbox-item.selector').each(function () {
       const val = parseInt($(this).data('value'));
       if (!isNaN(val) && val >= 1 && val <= _s.length) {
-        const txt = $(this).find('div').text();
-        if (/\d{1,3}\.\d{1,3}\.\d{1,3}/.test(txt)) {
-          $(this).find('div').text(`Сервер ${val}`);
+        const div = $(this).find('div');
+        if (/\d{1,3}\.\d{1,3}\.\d{1,3}/.test(div.text())) {
+          div.text(`Сервер ${val}`);
         }
-        // скрываем мёртвые серверы
         if (!Lampa.Storage.get(`_fs${val - 1}`)) $(this).hide();
       }
     });
@@ -101,10 +99,16 @@
           if ($('div[data-name="_fsbest"]').length > 1) item.hide();
           $('.settings-param__name', item).css('color', '#f3d900');
           $(".ad-server").hide();
-          $('div[data-name="_fsbest"]').insertAfter('div[data-name="torrserver_use_link"]');
+
+          // вставляем после "Використовувати посилання" — он всегда видим
+          const anchor = $('div[data-name="torrserver_use_link"]');
+          if (anchor.length) {
+            $('div[data-name="_fsbest"]').insertAfter(anchor);
+          }
+
           _hide();
-        }, 0);
+        }, 100);
       }
     });
-  }, 5000);
+  }, 3000);
 })();
