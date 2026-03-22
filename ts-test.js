@@ -22,7 +22,11 @@
     return acc;
   }, {});
 
-  _s.forEach((_, i) => Lampa.Storage.set(`_fs${i}`, ''));
+  // НЕ сбрасываем статусы — при рестарте сразу работает последний известный сервер
+  // Если статуса нет вообще — инициализируем впервые
+  _s.forEach((_, i) => {
+    if (!Lampa.Storage.get(`_fs${i}`)) Lampa.Storage.set(`_fs${i}`, '');
+  });
 
   async function _ping(encoded, i) {
     const url = _d(encoded);
@@ -47,17 +51,37 @@
     if (!alive.length) return;
 
     const best = alive[0];
-    Lampa.Storage.set('torrserver_url_two', _d(_s[best.i]));
-    Lampa.Storage.set('torrserver_use_link', 'two');
-    Lampa.Storage.set('_fsbest', String(best.i + 1));
-    Lampa.Settings.update();
+    const current = Lampa.Storage.get('torrserver_url_two');
+    const bestUrl = _d(_s[best.i]);
+
+    // обновляем только если сервер изменился
+    if (current !== bestUrl) {
+      Lampa.Storage.set('torrserver_url_two', bestUrl);
+      Lampa.Storage.set('torrserver_use_link', 'two');
+      Lampa.Storage.set('_fsbest', String(best.i + 1));
+      Lampa.Settings.update();
+    }
   }
 
-  const _hide = () => {
-    // скрываем только поле с реальным адресом
-    $('div[data-name="torrserver_url_two"]').hide();
+  // при старте применяем сохранённый сервер сразу, без ожидания пинга
+  const savedBest = Lampa.Storage.get('_fsbest');
+  if (savedBest) {
+    const idx = Number(savedBest) - 1;
+    const enc = _s[idx];
+    if (enc) {
+      Lampa.Storage.set('torrserver_url_two', _d(enc));
+      Lampa.Storage.set('torrserver_use_link', 'two');
+    }
+  }
 
-    // если в selectbox вдруг просочился IP — заменяем на номер
+  // первый пинг сразу
+  _poll();
+
+  // перепроверяем каждые 5 минут
+  setInterval(_poll, 5 * 60 * 1000);
+
+  const _hide = () => {
+    $('div[data-name="torrserver_url_two"]').hide();
     $('.selectbox-item.selector').each(function () {
       const val = parseInt($(this).data('value'));
       if (!isNaN(val) && val >= 1 && val <= _s.length) {
@@ -71,8 +95,6 @@
   };
 
   setInterval(_hide, 150);
-
-  _poll();
 
   setTimeout(() => {
     Lampa.SettingsApi.addParam({
@@ -99,13 +121,8 @@
           if ($('div[data-name="_fsbest"]').length > 1) item.hide();
           $('.settings-param__name', item).css('color', '#f3d900');
           $(".ad-server").hide();
-
-          // вставляем после "Використовувати посилання" — он всегда видим
           const anchor = $('div[data-name="torrserver_use_link"]');
-          if (anchor.length) {
-            $('div[data-name="_fsbest"]').insertAfter(anchor);
-          }
-
+          if (anchor.length) $('div[data-name="_fsbest"]').insertAfter(anchor);
           _hide();
         }, 100);
       }
