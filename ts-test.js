@@ -2,108 +2,105 @@
   'use strict';
   Lampa.Platform.tv();
 
-  const servers = [
-    '185.235.218.109:8090',
-    '95.174.93.5:8090',
-    '77.110.122.115:8090',
-    '77.238.228.41:8290',
-    '91.192.105.69:8090',
-    '195.64.231.192:8090',
-    '193.228.128.112/ts',
-    '31.129.234.181/ts',
-    '78.40.195.218:9118/ts',
-    '45.144.53.25:37940'
+  const _s = [
+    'MTg1LjIzNS4yMTguMTA5OjgwOTA=',
+    'OTUuMTc0LjkzLjU6ODA5MA==',
+    'NzcuMTEwLjEyMi4xMTU6ODA5MA==',
+    'NzcuMjM4LjIyOC40MTo4MjkwMA==',
+    'OTEuMTkyLjEwNS42OTo4MDkw',
+    'MTk1LjY0LjIzMS4xOTI6ODA5MA==',
+    'MTkzLjIyOC4xMjguMTEyL3Rz',
+    'MzEuMTI5LjIzNC4xODEvdHM=',
+    'NzguNDAuMTk1LjIxODo5MTE4L3Rz',
+    'NDUuMTQ0LjUzLjI1OjM3OTQw'
   ];
 
-  const delay = (ms) => new Promise(res => setTimeout(res, ms));
+  const _d = (s) => atob(s);
 
-  // сбрасываем статусы
-  servers.forEach((_, i) => {
-    Lampa.Storage.set(`FreeServ_${i+1}`, 'NotFound');
-  });
+  const labels = _s.reduce((acc, _, i) => {
+    acc[i + 1] = `Сервер ${i + 1}`;
+    return acc;
+  }, {});
 
-  // проверка сервера с измерением времени ответа
-  async function pingServer(url, index) {
+  _s.forEach((_, i) => Lampa.Storage.set(`_fs${i}`, ''));
+
+  async function _ping(encoded, i) {
+    const url = _d(encoded);
     const start = Date.now();
     try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 5000);
-      await fetch(`http://${url}/echo`, { signal: controller.signal });
-      clearTimeout(timeout);
-      const ms = Date.now() - start;
-      Lampa.Storage.set(`FreeServ_${index+1}`, url);
-      return { url, index, ms };
-    } catch (e) {
-      Lampa.Storage.set(`FreeServ_${index+1}`, 'NotFound');
-      return { url, index, ms: Infinity };
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 5000);
+      const res = await fetch(`http://${url}/echo`, { signal: ctrl.signal });
+      clearTimeout(t);
+      if (!res.ok) throw new Error();
+      Lampa.Storage.set(`_fs${i}`, encoded);
+      return { i, ms: Date.now() - start };
+    } catch {
+      Lampa.Storage.set(`_fs${i}`, '');
+      return { i, ms: Infinity };
     }
   }
 
-  // опрашиваем все серверы параллельно и выбираем лучший
-  async function pollServers() {
-    const results = await Promise.all(servers.map((url, i) => pingServer(url, i)));
+  async function _poll() {
+    const res = await Promise.all(_s.map((s, i) => _ping(s, i)));
+    const alive = res.filter(r => r.ms !== Infinity).sort((a, b) => a.ms - b.ms);
+    if (!alive.length) return;
 
-    // сортируем по времени ответа
-    const alive = results.filter(r => r.ms !== Infinity);
-    if (alive.length === 0) return;
-
-    alive.sort((a, b) => a.ms - b.ms);
     const best = alive[0];
-
-    console.log(`[TorrServer] Лучший сервер: ${best.url} (${best.ms}ms)`);
-
-    // автоматически применяем лучший
-    Lampa.Storage.set('torrserver_url_two', best.url);
+    Lampa.Storage.set('torrserver_url_two', _d(_s[best.i]));
     Lampa.Storage.set('torrserver_use_link', 'two');
-
-    // обновляем select чтобы показал выбранный
-    Lampa.Storage.set('freetorrserv', String(best.index + 1));
+    Lampa.Storage.set('_fsbest', String(best.i + 1));
     Lampa.Settings.update();
   }
 
-  // скрываем NotFound в выпадающих списках
-  setInterval(() => {
-    const el = $('.selectbox-item.selector > div:contains("NotFound")');
-    if (el.length > 0) el.parent('div').hide();
-  }, 100);
+  const _hide = () => {
+    // основное поле torrserver_url — НЕ трогаем
+    $('div[data-name="torrserver_url_two"]').hide();
+    $('div[data-name="torrserver_use_link"]').hide();
+    $('div.settings-param__name:contains("Посилання")').closest('.settings-param').hide();
+    $('.selectbox-item.selector > div').each(function () {
+      const txt = $(this).text();
+      if (/\d{1,3}\.\d{1,3}\.\d{1,3}/.test(txt) || txt === 'NotFound') {
+        $(this).parent().hide();
+      }
+    });
+    $('.selectbox-item.selector').each(function () {
+      const idx = parseInt($(this).data('value')) - 1;
+      if (!isNaN(idx) && !Lampa.Storage.get(`_fs${idx}`)) $(this).hide();
+    });
+  };
 
-  pollServers();
+  setInterval(_hide, 150);
 
-  // создаём пункт настроек
+  _poll();
+
   setTimeout(() => {
     Lampa.SettingsApi.addParam({
       component: 'server',
       param: {
-        name: 'freetorrserv',
+        name: '_fsbest',
         type: 'select',
-        values: servers.reduce((acc, _, i) => {
-          acc[i + 1] = Lampa.Storage.get(`FreeServ_${i+1}`) + '';
-          return acc;
-        }, {}),
+        values: labels,
         default: 0
       },
       field: {
         name: 'Бесплатный TorrServer #free',
-        description: 'Выбирается автоматически по скорости. Можно сменить вручную'
+        description: 'Выбирается автоматически по скорости'
       },
       onChange: function (value) {
-        if (value === '0') {
-          Lampa.Storage.set('torrserver_url_two', '');
-        } else {
-          const idx = Number(value) - 1;
-          Lampa.Storage.set('torrserver_url_two', servers[idx]);
-        }
+        const idx = Number(value) - 1;
+        const enc = _s[idx];
+        Lampa.Storage.set('torrserver_url_two', enc ? _d(enc) : '');
         Lampa.Storage.set('torrserver_use_link', 'two');
         Lampa.Settings.update();
       },
       onRender: function (item) {
         setTimeout(function () {
-          if ($('div[data-name="freetorrserv"]').length > 1) item.hide();
-          $('.settings-param__name', item).css('color', 'f3d900');
+          if ($('div[data-name="_fsbest"]').length > 1) item.hide();
+          $('.settings-param__name', item).css('color', '#f3d900');
           $(".ad-server").hide();
-          $('div[data-name="freetorrserv"]').insertAfter(
-            'div[data-name="torrserver_use_link"]'
-          );
+          $('div[data-name="_fsbest"]').insertAfter('div[data-name="torrserver_use_link"]');
+          _hide();
         }, 0);
       }
     });
