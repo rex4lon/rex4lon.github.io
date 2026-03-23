@@ -176,6 +176,45 @@
     observer.observe(document.body, { childList: true, subtree: true });
   }
 
+  // ─── ВИДИМОСТЬ ПОЛЕЙ ────────────────────────────────────────────────────
+  // Единая функция — вызывается из обоих onRender
+  function _applyFieldVisibility() {
+    var val = Lampa.Storage.field('torrserv');
+    if (val == '1') {
+      $('div[data-name="torrserver_url_two"]').hide();
+      $('div[data-name="torrserver_url"]').hide();
+      $('div[data-name="torrserver_use_link"]').hide();
+      $('div[data-name="switch_server_button"]').show();
+      $('#_fts_speed_btn').show();
+    } else {
+      // val == '0' — свой вариант
+      $('div[data-name="torrserver_url_two"]').hide();
+      $('div[data-name="torrserver_use_link"]').hide();
+      $('div[data-name="switch_server_button"]').hide();
+      $('#_fts_speed_btn').hide();
+      $('div[data-name="torrserver_url"]').show();
+    }
+  }
+
+  // ─── КНОПКА ТЕСТ СКОРОСТИ ───────────────────────────────────────────────
+  // Создаётся ОДИН РАЗ — защита через уникальный id
+  function _ensureSpeedButton() {
+    if ($('#_fts_speed_btn').length) {
+      // Уже есть — только переставляем на правильную позицию если нужно
+      $('#_fts_speed_btn').insertAfter('div[data-name="switch_server_button"]');
+      return;
+    }
+    var speedBtn = $(
+      '<div id="_fts_speed_btn" class="settings-param selector">' +
+      '<div class="settings-param__name">Тестувати швидкість</div>' +
+      '</div>'
+    );
+    speedBtn.on('hover:enter hover:click hover:touch', function () {
+      _testSpeed();
+    });
+    speedBtn.insertAfter('div[data-name="switch_server_button"]');
+  }
+
   // ─── НАСТРОЙКИ ───────────────────────────────────────────────────────────
 
   // 1. Free TorrServer — главный блок
@@ -209,45 +248,30 @@
       }
     },
     onRender: function (item) {
-      setTimeout(function () {
-        // Убираем дубли, оставляем только один экземпляр
-        if ($('div[data-name="torrserv"]').length > 1) {
-          item.hide();
-          return;
-        }
+      // Защита: если блок torrserv отрисовался дважды — скрыть второй
+      if ($('div[data-name="torrserv"]').length > 1) {
+        item.hide();
+        return;
+      }
 
-        // Перемещаем в начало родителя
-        var parent = item.parent();
-        item.detach();
-        parent.prepend(item);
+      setTimeout(function () {
+        // Переместить блок Free TorrServer в начало секции настроек сервера
+        item.prependTo(item.parent());
         item.show();
 
-        // Белый цвет имени параметра
+        // Белый цвет заголовка параметра
         $('.settings-param__name', item).css('color', '#ffffff');
 
-        // Вставляем после torrserv элемент с кнопкой смены
-        $('div[data-name="torrserv"]').insertAfter('div[data-name="torrserver_use_link"]');
+        // Переставить после элемента torrserver_use_link
+        // (чтобы Free TorrServer шёл сразу после стандартных полей ссылок)
+        var anchor = $('div[data-name="torrserver_use_link"]');
+        if (anchor.length) item.insertAfter(anchor);
 
-        if (Lampa.Storage.field('torrserv') == '1') {
-          // Автовыбор: скрываем ручные поля
-          $('div[data-name="torrserver_url_two"]').hide();
-          $('div[data-name="torrserver_url"]').hide();
-          $('div[data-name="torrserver_use_link"]').hide();
-          // Показываем кнопку переключения
-          $('div[data-name="switch_server_button"]').show();
-          // Показываем кнопку теста скорости
-          $('._fts-speed').show();
-        }
+        // Создать кнопку теста скорости (один раз)
+        _ensureSpeedButton();
 
-        if (Lampa.Storage.field('torrserv') == '0') {
-          // Свой вариант: скрываем авто-поля и доп. кнопки
-          $('div[data-name="torrserver_url_two"]').hide();
-          $('div[data-name="torrserver_use_link"]').hide();
-          $('div[data-name="switch_server_button"]').hide();
-          $('._fts-speed').hide();
-          // Показываем ручной URL
-          $('div[data-name="torrserver_url"]').show();
-        }
+        // Применить видимость полей согласно текущему режиму
+        _applyFieldVisibility();
       }, 0);
     }
   });
@@ -275,31 +299,15 @@
     onRender: function (item) {
       item.hide();
       setTimeout(function () {
-        // Убираем дубли кнопки переключения
-        $('._fts-swbtn').remove();
-        item.addClass('_fts-swbtn');
-
-        // Вставляем после torrserver_url
+        // Вставить кнопку смены сразу после torrserver_url
         item.insertAfter('div[data-name="torrserver_url"]');
         item.show();
 
-        // Убираем старую кнопку теста, добавляем новую — только один раз
-        $('._fts-speed').remove();
-        var speedBtn = $(
-          '<div class="settings-param selector _fts-speed">' +
-          '<div class="settings-param__name">Тестувати швидкість</div>' +
-          '</div>'
-        );
-        speedBtn.on('hover:enter hover:click hover:touch', function () {
-          _testSpeed();
-        });
-        item.after(speedBtn);
+        // Гарантировать наличие кнопки теста скорости
+        _ensureSpeedButton();
 
-        // Если режим "Свой вариант" — скрыть эти блоки
-        if (Lampa.Storage.field('torrserv') == '0') {
-          item.hide();
-          speedBtn.hide();
-        }
+        // Синхронизировать видимость
+        _applyFieldVisibility();
       }, 0);
     }
   });
