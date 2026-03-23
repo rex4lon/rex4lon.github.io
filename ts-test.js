@@ -132,22 +132,23 @@
     $('#app > div.head > div > div.head__actions').append(btnHtml);
     $('#SWITCH_SERVER').insertAfter('div[class="head__action selector open--settings"]');
 
-    // Оригинал: если mode==1 ИЛИ torrserv==0 → hide через 500мс
-    if (Lampa.Storage.get('switch_server_button') == 1 || Lampa.Storage.get('torrserv') == 0)
+    // Оригинал точно:
+    // (mode==1 || torrserv==0) → hide через 500мс
+    if (Lampa.Storage.field('switch_server_button') == 1 || Lampa.Storage.field('torrserv') == 0)
       setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 500);
 
-    // mode==2 И torrserv !== 0 → _showInTorrents
-    if (Lampa.Storage.get('switch_server_button') == 2 && Lampa.Storage.get('torrserv') !== 0)
+    // mode==2 && torrserv !== 0 → _showInTorrents
+    if (Lampa.Storage.field('switch_server_button') == 2 && Lampa.Storage.field('torrserv') !== 0)
       _showInTorrents();
 
-    // mode==3 И torrserv !== 0 → show
-    if (Lampa.Storage.get('switch_server_button') == 3 && Lampa.Storage.get('torrserv') !== 0)
+    // mode==3 && torrserv !== 0 → show
+    if (Lampa.Storage.field('switch_server_button') == 3 && Lampa.Storage.field('torrserv') !== 0)
       $('#SWITCH_SERVER').show();
 
     // torrserv==0 → _hiddenMode
-    if (Lampa.Storage.get('torrserv') == 0) _hiddenMode();
+    if (Lampa.Storage.field('torrserv') == 0) _hiddenMode();
 
-    // Клик — оригинал: show('TorrServer изменён') + _changeServer()
+    // Клик
     $('#SWITCH_SERVER').on('hover:enter hover:click hover:touch', function () {
       Lampa.Noty.show('TorrServer изменён');
       _changeServer();
