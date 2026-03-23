@@ -8,7 +8,7 @@
     'MTg1LjIzNS4yMTguMTA5OjgwOTA=',  // 185.235.218.109:8090
     'OTUuMTc0LjkzLjU6ODA5MA==',       // 95.174.93.5:8090
     'NzcuMTEwLjEyMi4xMTU6ODA5MA==',   // 77.110.122.115:8090
-    'NzcuMjM4LjIyOC40MTo4Mjkw',       // 77.238.228.41:8290  ← исправлено с 82900
+    'NzcuMjM4LjIyOC40MTo4Mjkw',       // 77.238.228.41:8290
     'OTEuMTkyLjEwNS42OTo4MDkw',       // 91.192.105.69:8090
     'MTk1LjY0LjIzMS4xOTI6ODA5MA==',   // 195.64.231.192:8090
     'MTkzLjIyOC4xMjguMTEyL3Rz',       // 193.228.128.112/ts
@@ -48,7 +48,7 @@
     + '<div style="width:1.3em;height:1.3em;padding-right:.1em">' + _icon + '</div>'
     + '<div style="font-size:1.0em"><div style="padding:.3em .3em;padding-top:0">'
     + '<div style="background:#d99821;padding:.5em;border-radius:.4em">'
-    + '<div style="line-height:.3">TorrServer</div>'
+    + '<div style="line-height:.3">Free TorrServer</div>'
     + '</div></div></div></div>';
 
   // ─── ВЫБОР ЖИВОГО СЕРВЕРА ─────────────────────────────────────────────────
@@ -76,6 +76,31 @@
       Lampa.Noty.show('TorrServer: ' + url);
     } else {
       Lampa.Noty.show('Нет доступных серверов');
+    }
+  }
+
+  // ─── ТЕСТ СКОРОСТИ ───────────────────────────────────────────────────────
+  async function _testSpeed() {
+    var baseUrl = Lampa.Storage.get('torrserver_url_two') || Lampa.Storage.get('torrserver_url') || '';
+    if (!baseUrl) {
+      Lampa.Noty.show('Сервер не задан');
+      return;
+    }
+    Lampa.Noty.show('Тестирование...');
+    var start = Date.now();
+    try {
+      var ctrl = new AbortController();
+      var t = setTimeout(function () { ctrl.abort(); }, 8000);
+      var res = await fetch(baseUrl + '/echo', { signal: ctrl.signal });
+      clearTimeout(t);
+      if (res.ok) {
+        var ms = Date.now() - start;
+        Lampa.Noty.show('Пинг: ' + ms + ' мс — ' + baseUrl.replace('http://', ''));
+      } else {
+        Lampa.Noty.show('Сервер не отвечает');
+      }
+    } catch (e) {
+      Lampa.Noty.show('Ошибка подключения');
     }
   }
 
@@ -120,7 +145,7 @@
     });
   }
 
-  // ─── MUTATIONOBSERVER: ошибка торрента → предложить сменить сервер ────────
+  // ─── MUTATIONOBSERVER: ошибка → сменить сервер ───────────────────────────
   function _startErrorObserver() {
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (m) {
@@ -151,6 +176,8 @@
   }
 
   // ─── НАСТРОЙКИ ────────────────────────────────────────────────────────────
+
+  // 1. Free TorrServer — главный переключатель
   Lampa.SettingsApi.addParam({
     component: 'server',
     param: {
@@ -189,32 +216,56 @@
           $('div[data-name="torrserver_url"]').hide();
           $('div[data-name="torrserver_use_link"]').hide();
           $('div > span:contains("Ссылки")').remove();
+          $('div > span:contains("Посилання")').remove();
         }
         if (Lampa.Storage.field('torrserv') == '0') {
           $('div[data-name="torrserver_url_two"]').hide();
           $('div[data-name="torrserver_use_link"]').hide();
           $('div[data-name="switch_server_button"]').hide();
+          $('div[data-name="torrserv_speed_test"]').hide();
         }
       }, 0);
     }
   });
 
+  // 2. Кнопка для смены сервера
   Lampa.SettingsApi.addParam({
     component: 'server',
     param: {
       name:    'switch_server_button',
       type:    'select',
-      values:  { 1: 'Не показывать', 2: 'Только в торрентах', 3: 'Всегда' },
+      values:  { 1: 'Не показывать', 2: 'Показывать только в торрентах', 3: 'Показывать всегда' },
       default: '2'
     },
     field: {
-      name:        'Кнопка смены сервера',
-      description: 'Кнопка в верхней панели для быстрой смены TorrServer'
+      name:        'Кнопка для смены сервера',
+      description: 'Параметр включает отображение кнопки в верхнем баре для быстрой смены сервера'
     },
     onChange: function () { _updateButtonMode(); },
     onRender: function () {
       setTimeout(function () {
         $('div[data-name="switch_server_button"]').insertAfter('div[data-name="torrserver_url"]');
+      }, 0);
+    }
+  });
+
+  // 3. Тест скорости
+  Lampa.SettingsApi.addParam({
+    component: 'server',
+    param: {
+      name: 'torrserv_speed_test',
+      type: 'button'
+    },
+    field: {
+      name:        'Тестувати швидкість',
+      description: ''
+    },
+    onClick: function () {
+      _testSpeed();
+    },
+    onRender: function () {
+      setTimeout(function () {
+        $('div[data-name="torrserv_speed_test"]').insertAfter('div[data-name="switch_server_button"]');
       }, 0);
     }
   });
