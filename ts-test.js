@@ -6,7 +6,7 @@
 
   Lampa.Platform.tv();
 
-  // ─── СЕРВЕРЫ ────────────────────────────────────────────────────────────
+  // ─── СЕРВЕРЫ (вместо одного endpoint http://185.87.48.42:8090/random_torr) ──
   var SERVERS = [
     '185.235.218.109:8090',
     '95.174.93.5:8090',
@@ -56,8 +56,10 @@
     '<div style="line-height:.3">Free TorrServer</div>' +
     '</div></div></div></div>';
 
-  // ─── ВЫБОР ЖИВОГО СЕРВЕРА ────────────────────────────────────────────────
-  async function _pickServer() {
+  // ─── СМЕНА СЕРВЕРА (аналог _0x208010 / _0x743d45 / _0x3cd977) ───────────
+  // Оригинал: GET http://185.87.48.42:8090/random_torr → IP → torrserver_url_two = http://IP:8090
+  // Наш аналог: перебираем свои серверы через /echo, берём первый живой
+  async function _changeServer() {
     var shuffled = SERVERS.slice().sort(function () { return Math.random() - 0.5; });
     for (var i = 0; i < shuffled.length; i++) {
       var url = shuffled[i];
@@ -66,65 +68,56 @@
         var t = setTimeout(function () { ctrl.abort(); }, 4000);
         var res = await fetch('http://' + url + '/echo', { signal: ctrl.signal });
         clearTimeout(t);
-        if (res.ok) return url;
+        if (res.ok) {
+          Lampa.Storage.set('torrserver_url_two', 'http://' + url);
+          return;
+        }
       } catch (e) {}
     }
-    return null;
+    // Оригинал при ошибке: console.error + Lampa.Noty.show('Ошибка запроса')
+    console.error('Ошибка при получении IP-адреса:');
+    Lampa.Noty.show('Ошибка запроса');
   }
 
-  // ─── ПРИМЕНИТЬ СЕРВЕР (аналог оригинального _0x743d45 / _0x3cd977) ──────
-  // Оригинал: XMLHttpRequest GET http://185.87.48.42:8090/random_torr
-  // Наша версия: перебираем свои серверы через /echo
-  async function _applyServer(notify) {
-    var url = await _pickServer();
-    if (url) {
-      Lampa.Storage.set('torrserver_url_two', 'http://' + url);
-      Lampa.Storage.set('torrserver_use_link', 'two');
-      if (notify) Lampa.Noty.show('TorrServer изменён');
-    } else {
-      Lampa.Noty.show('Ошибка запроса');
-    }
-  }
+  // ─── РЕЖИМЫ ПОКАЗА КНОПКИ ───────────────────────────────────────────────
 
-  // ─── РЕЖИМЫ ПОКАЗА КНОПКИ (точная копия оригинала) ──────────────────────
-
-  // Оригинал _0x4f8816: hide + follow activity → если torrents → hide
+  // _0xad863d: mode=1 (Не показывать) — hide сразу, при torrents тоже hide
   function _hiddenMode() {
-    setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 10);
+    setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 50);
     Lampa.Storage.listener.follow('change', function (e) {
       if (e.name !== 'activity') return;
       if (Lampa.Activity.active().component !== 'torrents')
-        setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 10);
+        setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 50);
       if (Lampa.Activity.active().component === 'torrents')
-        setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 10);
+        setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 100);
     });
   }
 
-  // Оригинал _0x53bf62 / _0x2a0672: hide + follow activity → torrents → show
+  // _0x50e82d / _0x2a0672: mode=2 (Только в торрентах) — hide, при torrents → show
   function _showInTorrents() {
-    setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 10);
+    setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 50);
     Lampa.Storage.listener.follow('change', function (e) {
       if (e.name !== 'activity') return;
       if (Lampa.Activity.active().component !== 'torrents')
-        setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 10);
+        setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 50);
       if (Lampa.Activity.active().component === 'torrents')
         setTimeout(function () { $('#SWITCH_SERVER').show(); }, 100);
     });
   }
 
-  // Оригинал _0x59bfcb / _0x338acd: show + follow activity → always show
+  // _0x486188 / _0x338acd: mode=3 (Всегда) — show, при activity всегда show
   function _showAlways() {
-    setTimeout(function () { $('#SWITCH_SERVER').show(); }, 10);
+    setTimeout(function () { $('#SWITCH_SERVER').show(); }, 50);
     Lampa.Storage.listener.follow('change', function (e) {
       if (e.name !== 'activity') return;
       if (Lampa.Activity.active().component !== 'torrents')
-        setTimeout(function () { $('#SWITCH_SERVER').show(); }, 10);
+        setTimeout(function () { $('#SWITCH_SERVER').show(); }, 50);
       if (Lampa.Activity.active().component === 'torrents')
-        setTimeout(function () { $('#SWITCH_SERVER').show(); }, 10);
+        setTimeout(function () { $('#SWITCH_SERVER').show(); }, 100);
     });
   }
 
-  // Оригинал _0x497abe / _0x12470f / _0x3ab8ff: dispatch by value
+  // _0x1d6d3c / _0x3ab8ff: диспетчер режимов
   function _updateButtonMode() {
     var mode = Lampa.Storage.get('switch_server_button');
     if (mode == 1) _hiddenMode();
@@ -132,69 +125,87 @@
     if (mode == 3) _showAlways();
   }
 
-  // ─── КНОПКА В ШАПКЕ (оригинал _0x4d477a / _0x5152e2 / _0x280a17) ────────
+  // ─── КНОПКА В ШАПКЕ (_0x151167 / _0x280a17) ─────────────────────────────
   function _initButton() {
-    if ($('#SWITCH_SERVER').length) return;
-
     var btnHtml = '<div id="SWITCH_SERVER" class="head__action selector switch-screen">' + _icon + '</div>';
+
     $('#app > div.head > div > div.head__actions').append(btnHtml);
     $('#SWITCH_SERVER').insertAfter('div[class="head__action selector open--settings"]');
 
-    // Режим видимости согласно настройке
-    var mode = Lampa.Storage.get('switch_server_button');
-    if (mode == 1) setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 500);
-    if (mode == 2) _showInTorrents();
-    if (mode == 3) $('#SWITCH_SERVER').show();
+    // Оригинал: если mode==1 ИЛИ torrserv==0 → hide через 500мс
+    if (Lampa.Storage.get('switch_server_button') == 1 || Lampa.Storage.get('torrserv') == 0)
+      setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 500);
 
-    // Если torrserv == 0 (свой вариант) — режим скрытия
+    // mode==2 И torrserv !== 0 → _showInTorrents
+    if (Lampa.Storage.get('switch_server_button') == 2 && Lampa.Storage.get('torrserv') !== 0)
+      _showInTorrents();
+
+    // mode==3 И torrserv !== 0 → show
+    if (Lampa.Storage.get('switch_server_button') == 3 && Lampa.Storage.get('torrserv') !== 0)
+      $('#SWITCH_SERVER').show();
+
+    // torrserv==0 → _hiddenMode
     if (Lampa.Storage.get('torrserv') == 0) _hiddenMode();
 
-    // Клик — сменить сервер
+    // Клик — оригинал: show('TorrServer изменён') + _changeServer()
     $('#SWITCH_SERVER').on('hover:enter hover:click hover:touch', function () {
       Lampa.Noty.show('TorrServer изменён');
-      _applyServer(true);
+      _changeServer();
     });
   }
 
   // ─── MUTATIONOBSERVER (точная копия оригинала) ───────────────────────────
-  // Оригинал запускает observer только когда activity === 'torrents'
-  // и останавливает когда уходим из torrents
+  // Оригинал запускает observer только при torrserv===null или ==1,
+  // через Storage listener на 'activity',
+  // создаёт observer при переходе в torrents, убивает при уходе
   var _observer = null;
 
-  function _startObserverForTorrents() {
-    if (_observer) return;
-    _observer = new MutationObserver(function (mutations) {
-      mutations.forEach(function (m) {
-        if (!$(m.target).is('.modal__title')) return;
-        var title = $('.modal__title').text().trim();
-        if (title !== Lampa.Lang.translate('torrent_error_connect')) return;
+  if (localStorage.getItem('torrserv') === null || localStorage.getItem('torrserv') == 1) {
+    Lampa.Storage.listener.follow('change', function (e) {
+      if (e.name !== 'activity') return;
 
-        $('.torrent-checklist__progress-bar > div').remove();
-        $('.torrent-checklist__progress-steps').remove();
-        $('.torrent-checklist__list > li').remove();
+      if (Lampa.Activity.active().component === 'torrents') {
+        if (!_observer) {
+          _observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (m) {
+              if (!$(m.target).is('.modal__title')) return;
+              var title = $('.modal__title').text().trim();
+              console.log('modal title', title);
+              if (title === Lampa.Lang.translate('torrent_error_connect')) {
+                console.log('torrent_error_connect matched');
+                $('.torrent-checklist__progress-bar > div').remove();
+                $('.torrent-checklist__progress-steps').remove();
+                $('.torrent-checklist__list > li').remove();
 
-        var descr = $('.torrent-checklist__descr');
-        if (descr.length) descr.html('Сервер не ответил, нажмите кнопку снизу для его замены на другой !');
+                var descr = $('.torrent-checklist__descr');
+                if (descr.length) descr.html('Сервер не ответил, нажмите кнопку снизу для его замены на другой !');
 
-        var btn = $('.modal .simple-button');
-        if (btn.length) {
-          btn.html('Сменить сервер');
-          btn.on('hover:enter hover:click hover:touch', function () {
-            $('.modal').remove();
-            Lampa.Noty.show('TorrServer изменён');
-            _applyServer(true);
-            Lampa.Activity.back('content');
+                var btn = $('.modal .simple-button');
+                if (btn.length) {
+                  btn.html('Сменить сервер');
+                  btn.on('hover:enter hover:click hover:touch', function () {
+                    $('.modal').remove();
+                    Lampa.Noty.show('TorrServer изменён');
+                    _changeServer();
+                    Lampa.Activity.back('content');
+                  });
+                }
+              } else {
+                console.log('modal title no match');
+              }
+            });
           });
+          _observer.observe(document.body, { childList: true, subtree: true });
         }
-      });
+      } else {
+        if (_observer) { _observer.disconnect(); _observer = null; }
+      }
     });
-    _observer.observe(document.body, { childList: true, subtree: true });
   }
 
   // ─── НАСТРОЙКИ ───────────────────────────────────────────────────────────
 
   // 1. Free TorrServer — главный блок
-  // onRender — точная копия оригинала (строки 527-558 декодированного файла)
   Lampa.SettingsApi.addParam({
     component: 'server',
     param: {
@@ -218,7 +229,7 @@
       if (value == '1') {
         Lampa.Noty.show('TorrServer изменён');
         Lampa.Storage.set('torrserver_use_link', 'two');
-        _applyServer(true);
+        _changeServer();
         _updateButtonMode();
         Lampa.Settings.update();
         return;
@@ -226,7 +237,7 @@
     },
     onRender: function (item) {
       setTimeout(function () {
-        // Если torrserv отрисован дважды — скрыть дубль
+        // Дубль — скрыть
         if ($('div[data-name="torrserv"]').length > 1) item.hide();
 
         // Белый цвет заголовка
@@ -236,7 +247,7 @@
         $('div[data-name="torrserv"]').insertAfter('div[data-name="torrserver_use_link"]');
 
         if (Lampa.Storage.field('torrserv') == '1') {
-          // Автовыбор: фокус, скрыть url-поля
+          // Автовыбор: фокус на элемент настроек, скрыть url-поля, убрать "Ссылки"
           var el = document.querySelector(
             '#app > div.settings > div.settings__content.layer--height > div.settings__body > div > div > div > div > div > div:nth-child(2)'
           );
@@ -249,7 +260,7 @@
         }
 
         if (Lampa.Storage.field('torrserv') == '0') {
-          // Свой вариант: фокус, скрыть авто-поля и кнопку
+          // Свой вариант: фокус, скрыть авто-поля и кнопку переключения
           var el = document.querySelector(
             '#app > div.settings > div.settings__content.layer--height > div.settings__body > div > div > div > div > div > div:nth-child(2)'
           );
@@ -264,7 +275,6 @@
   });
 
   // 2. Кнопка для смены сервера
-  // onRender — точная копия оригинала: ТОЛЬКО insertAfter, ничего больше
   Lampa.SettingsApi.addParam({
     component: 'server',
     param: {
@@ -286,14 +296,13 @@
     },
     onRender: function (item) {
       setTimeout(function () {
-        // ТОЛЬКО это — точная копия оригинала строка 578-580
+        // Оригинал: ТОЛЬКО это — insertAfter torrserver_url
         $('div[data-name="switch_server_button"]').insertAfter('div[data-name="torrserver_url"]');
       }, 0);
     }
   });
 
-  // ─── СТАРТ ───────────────────────────────────────────────────────────────
-  // Оригинал: если torrserv === null или == 1 → очистить url_two, через 3000мс вызвать смену
+  // ─── СТАРТ (_0x4e0503 / _0x2da124) ──────────────────────────────────────
   var _wait = setInterval(function () {
     if (typeof Lampa !== 'undefined') {
       clearInterval(_wait);
@@ -302,35 +311,27 @@
   }, 200);
 
   function _boot() {
-    // Оригинал: (localStorage.getItem('torrserv') === null || == 1) → clear url_two, через 3000мс apply + set use_link=two
+    // Оригинал: если torrserv===null или ==1 →
+    //   set torrserv='1', clear torrserver_url_two, через 3000мс: _changeServer() + set use_link='two'
     if (localStorage.getItem('torrserv') === null || localStorage.getItem('torrserv') == 1) {
+      Lampa.Storage.set('torrserv', '1');
       Lampa.Storage.set('torrserver_url_two', '');
       setTimeout(function () {
-        _applyServer(false);
+        _changeServer();
         Lampa.Storage.set('torrserver_use_link', 'two');
       }, 3000);
     }
 
-    // Оригинал: если switch_server_button === null → _showInTorrents
+    // Оригинал: если switch_server_button===null → set '2' + _showInTorrents
     if (localStorage.getItem('switch_server_button') === null) {
       Lampa.Storage.set('switch_server_button', '2');
       _showInTorrents();
     }
 
+    // Android
     if (Lampa.Platform.is('android')) {
       Lampa.Storage.set('internal_torrclient', true);
     }
-
-    // Оригинал: observer запускается при переходе в torrents (через Storage listener на appready)
-    Lampa.Storage.listener.follow('change', function (e) {
-      if (e.type == 'appready') {
-        if (Lampa.Activity.active().component === 'torrents') {
-          _startObserverForTorrents();
-        } else {
-          if (_observer) { _observer.disconnect(); _observer = null; }
-        }
-      }
-    });
   }
 
   // ─── КНОПКА ПОСЛЕ ЗАГРУЗКИ APP ──────────────────────────────────────────
