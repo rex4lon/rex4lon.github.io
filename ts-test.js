@@ -210,8 +210,8 @@
     onRender: function (item) {
       item.hide();
       setTimeout(function () {
-        // Удалить старые копии от предыдущего рендера
-        $('div[data-name="torrserv"]').not(item[0]).remove();
+        $('._fts-torrserv').remove();        // убрать ВСЕ старые копии
+        item.addClass('_fts-torrserv');
         item.prependTo(item.parent());
         item.show();
         $('.settings-param__name', item).css('color', '#ffffff');
@@ -247,7 +247,8 @@
     onRender: function (item) {
       item.hide();
       setTimeout(function () {
-        $('div[data-name="switch_server_button"]').not(item[0]).remove();
+        $('._fts-swbtn').remove();           // убрать ВСЕ старые копии
+        item.addClass('_fts-swbtn');
         item.insertAfter('div[data-name="torrserver_url"]');
         item.show();
       }, 0);
@@ -269,7 +270,8 @@
     onRender: function (item) {
       item.hide();
       setTimeout(function () {
-        $('div[data-name="torrserv_speed_test"]').not(item[0]).remove();
+        $('._fts-speed').remove();           // убрать ВСЕ старые копии
+        item.addClass('_fts-speed');
         item.insertAfter('div[data-name="switch_server_button"]');
         item.show();
       }, 0);
