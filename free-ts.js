@@ -7,7 +7,7 @@
   Lampa.Platform.tv();
 
   // ─── НАСТРОЙКИ WORKER ─────────────────────────────────────────────────────
-  var WORKER_URL = 'https://your-worker.workers.dev/';
+  var WORKER_URL = 'https://snowy-morning-0585.velr3on.workers.dev';
   var WORKER_TOKEN = 'tsk_live_b7Qx9L2pZr8VdK4mN6sF1HcT';
 
   // ─── SVG иконка для кнопки в шапке ───────────────────────────────────────
