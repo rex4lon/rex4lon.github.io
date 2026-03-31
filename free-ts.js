@@ -23,13 +23,6 @@
     '<div style="line-height:0.3;">Free TorrServer</div>' +
     '</div></div></div></div>';
 
-  function normalizeUrl(url) {
-    if (!url) return '';
-    url = String(url).trim();
-    if (!/^https?:\/\//i.test(url)) url = 'http://' + url;
-    return url.replace(/\/+$/, '');
-  }
-
   function buildWorkerUrl() {
     var sep = WORKER_URL.indexOf('?') > -1 ? '&' : '?';
     return WORKER_URL + sep + 'token=' + encodeURIComponent(WORKER_TOKEN) + '&_=' + Date.now();
@@ -56,12 +49,14 @@
         url = raw;
       }
 
-      url = normalizeUrl(url);
-
       if (!url) {
         Lampa.Noty.show('Ошибка запроса');
         return;
       }
+
+      // Нормализация — как в оригинале: http:// + ip + :8090
+      if (!/^https?:\/\//i.test(url)) url = 'http://' + url;
+      url = url.replace(/\/+$/, '');
 
       Lampa.Storage.set('torrserver_url_two', url);
       Lampa.Storage.set('torrserver_use_link', 'two');
@@ -79,29 +74,29 @@
   }
 
   function hiddenMode() {
-    setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 10);
+    setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 50);
     Lampa.Storage.listener.follow('change', function (e) {
       if (e.name !== 'activity') return;
-      setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 10);
+      setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 50);
     });
   }
 
   function showInTorrents() {
-    setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 10);
+    setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 50);
     Lampa.Storage.listener.follow('change', function (e) {
       if (e.name !== 'activity') return;
       if (Lampa.Activity.active().component !== 'torrents')
-        setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 10);
+        setTimeout(function () { $('#SWITCH_SERVER').hide(); }, 50);
       if (Lampa.Activity.active().component === 'torrents')
-        setTimeout(function () { $('#SWITCH_SERVER').show(); }, 10);
+        setTimeout(function () { $('#SWITCH_SERVER').show(); }, 100);
     });
   }
 
   function showAlways() {
-    setTimeout(function () { $('#SWITCH_SERVER').show(); }, 10);
+    setTimeout(function () { $('#SWITCH_SERVER').show(); }, 50);
     Lampa.Storage.listener.follow('change', function (e) {
       if (e.name !== 'activity') return;
-      setTimeout(function () { $('#SWITCH_SERVER').show(); }, 10);
+      setTimeout(function () { $('#SWITCH_SERVER').show(); }, 50);
     });
   }
 
@@ -138,11 +133,11 @@
     });
   }
 
+  // ─── observer объявлен СНАРУЖИ колбэка — как в оригинале ─────────────────
   if (localStorage.getItem('torrserv') === null || localStorage.getItem('torrserv') == 1) {
+    var observer;
     Lampa.Storage.listener.follow('change', function (e) {
       if (e.name !== 'activity') return;
-
-      var observer;
 
       if (Lampa.Activity.active().component === 'torrents') {
         if (!observer) {
@@ -158,7 +153,7 @@
 
                 var descr = $('.torrent-checklist__descr');
                 if (descr.length)
-                  descr.html('Сервер недоступен, попробуйте сменить сервер.');
+                  descr.html('Сервер не ответил, нажмите кнопку снизу для его замены на другой !');
 
                 var btn = $('.modal .simple-button');
                 if (btn.length) {
@@ -201,8 +196,10 @@
       }, 3000);
     }
 
-    if (localStorage.getItem('switch_server_button') === null)
+    if (localStorage.getItem('switch_server_button') === null) {
+      Lampa.Storage.set('switch_server_button', '2');
       showInTorrents();
+    }
 
     if (Lampa.Platform.is('android'))
       Lampa.Storage.set('internal_torrclient', true);
@@ -245,6 +242,9 @@
         $('div[data-name="torrserv"]').insertAfter('div[data-name="torrserver_use_link"]');
 
         if (Lampa.Storage.field('torrserv') == '1') {
+          var el = document.querySelector('#app > div.settings > div.settings__content.layer--height > div.settings__body > div > div > div > div > div > div:nth-child(2)');
+          Lampa.Controller.focus(el);
+          Lampa.Controller.toggle('settings_component');
           $('div[data-name="torrserver_url_two"]').hide();
           $('div[data-name="torrserver_url"]').hide();
           $('div[data-name="torrserver_use_link"]').hide();
@@ -252,6 +252,9 @@
         }
 
         if (Lampa.Storage.field('torrserv') == '0') {
+          var el = document.querySelector('#app > div.settings > div.settings__content.layer--height > div.settings__body > div > div > div > div > div > div:nth-child(2)');
+          Lampa.Controller.focus(el);
+          Lampa.Controller.toggle('settings_component');
           $('div[data-name="torrserver_url_two"]').hide();
           $('div[data-name="torrserver_use_link"]').hide();
           $('div[data-name="switch_server_button"]').hide();
