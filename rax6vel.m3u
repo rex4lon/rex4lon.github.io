@@ -285,7 +285,7 @@ http://lb.wisp.cat/lb0/Kino24_SD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/Szlagier_TV/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/246.png" tvg-id="tv6-lv",TV6 Latvia HD
 http://lb.wisp.cat/lb0/TV6_LV_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Фільмові" tvg-id="",Боевики HD
+#EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/683.png" tvg-id="zal-17-tricolor",Боевики HD
 http://lb.wisp.cat/lb0/Boeviki_Hd/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/682.png" tvg-id="cz_channel:filmboxplus",FilmBox Stars
 http://lb.wisp.cat/lb0/CZ_Filmbox_Stars/index.m3u8?token=swU4GrKaz
@@ -355,7 +355,7 @@ http://lb.wisp.cat/lb0/Planeta_4K/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/Digi4K/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Трансляції" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/291.png" tvg-id="upltv1",UPL.TV Sub3 HD
 http://lb.wisp.cat/lb0/UPL_3_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Музичні" tvg-id="",Music Box Hits HD
+#EXTINF:-1 group-title="Музичні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/96.png" tvg-id="musicbox-hits",Music Box Hits HD
 http://lb.wisp.cat/lb0/Music_Box_Hits_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Пізнавальні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/804.png" tvg-id="",Da Vinci: Operation Ouch HD
 http://lb.wisp.cat/lb0/Da_Vinci_Operation_Ouch_HD/video.m3u8?token=swU4GrKaz
@@ -565,7 +565,7 @@ http://lb.wisp.cat/lb0/Home_4K/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/EUROKINO_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Дитячі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1093.png" tvg-id="detsky",Детский HD
 http://lb.wisp.cat/lb0/Detskyi_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2772.png" tvg-id="",Canal+ Sport 3 CZ
+#EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2772.png" tvg-id="canal-pl-sport-3-cz",Canal+ Sport 3 CZ
 http://lb.wisp.cat/lb0/Canal_plus_Sport_3_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2773.png" tvg-id="canal-pl-sport-4-cz",Canal+ Sport 4 CZ
 http://lb.wisp.cat/lb0/Canal_plus_Sport_4_HD/video.m3u8?token=swU4GrKaz
@@ -707,7 +707,7 @@ http://lb.wisp.cat/lb0/Eurosport_1/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/Viasat_Sport_Premium/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/57.png" tvg-id="eurosport2",Eurosport 2 CEE
 http://lb.wisp.cat/lb0/CH_EUROSPORT2/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/471.png" tvg-id="",Pukas TV HD
+#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/471.png" tvg-id="pukas-lt",Pukas TV HD
 http://lb.wisp.cat/lb0/Pukas_TV_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/639.png" tvg-id="cz_channel:kinosvet",CS Mystery
 http://lb.wisp.cat/lb0/CZ_CS_Mystery/video.m3u8?token=swU4GrKaz
@@ -769,7 +769,7 @@ http://lb.wisp.cat/lb0/O_R_Morskyy_sezon_HD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/WE_SPORTTV/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" catchup-days="3" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1063.png" tvg-id="tvplay-sports",Go3 Sport 1 HD
 http://lb.wisp.cat/lb0/LT_VIASAT_SPORT_BALTIC_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Спортивні" tvg-id="",Eurosport 4 HD Polska
+#EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/158.png" tvg-id="eurosport-4-pl",Eurosport 4 HD Polska
 http://lb.wisp.cat/lb0/Eurosport_4_PL/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/469.png" tvg-id="extreme-sports",Extreme Sports
 http://lb.wisp.cat/lb0/Extreme_Sports/video.m3u8?token=swU4GrKaz
@@ -801,15 +801,15 @@ http://lb.wisp.cat/lb0/Mezzo_Live_HD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/Cinema_Megahit/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Дитячі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/388.png" tvg-id="2859-my-little-pony-hd",My Little Pony HD
 http://lb.wisp.cat/lb0/My_Little_Pony_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дитячі" tvg-id="",Baby TV HD
+#EXTINF:-1 group-title="Дитячі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/129.png" tvg-id="baby-tv",Baby TV HD
 http://lb.wisp.cat/lb0/Baby_TV_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Музичні" tvg-id="",M2O TV
 http://lb.wisp.cat/lb0/m2o_tv/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Музичні" tvg-id="",Music Box Sexy
+#EXTINF:-1 group-title="Музичні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/125.png" tvg-id="musicbox-sexy",Music Box Sexy
 http://lb.wisp.cat/lb0/MusicBox_Sexy/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Дитячі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/375.png" tvg-id="1776-hubka-bob-hd",Губка Боб HD
 http://lb.wisp.cat/lb0/Hubga_Bob/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Музичні" tvg-id="",RFM HD
+#EXTINF:-1 group-title="Музичні" tvg-id="rfm-tv-fr",RFM HD
 http://lb.wisp.cat/lb0/MTV_90_int/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Музичні" tvg-id="",V2Beat
 http://lb.wisp.cat/lb0/v2beat/video.m3u8?token=swU4GrKaz
@@ -937,13 +937,13 @@ http://lb.wisp.cat/lb0/Viasat_NatureHistory_HD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/TravelChannel_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2565.png" tvg-id="",Viasat True Crime CZ
 http://lb.wisp.cat/lb0/CZ_True_Crime/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/179.png" tvg-id="",Marijampoles TV
+#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/179.png" tvg-id="marijampoles-lt",Marijampoles TV
 http://lb.wisp.cat/lb0/Marijampoles_TV/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Пізнавальні" catchup-days="5" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/675.png" tvg-id="travel-adventure",Travel+Adventure HD
 http://lb.wisp.cat/lb0/TravelAdventureHD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Пізнавальні" catchup-days="5" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/654.png" tvg-id="eda-hd",FoodTime HD
 http://lb.wisp.cat/lb0/edahd/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Музичні" tvg-id="",Music Box Dance HD
+#EXTINF:-1 group-title="Музичні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/644.png" tvg-id="musicbox-dance",Music Box Dance HD
 http://lb.wisp.cat/lb0/Music_Box_Dance_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/282.png" tvg-id="",JOJ Cinema +1 HD
 http://lb.wisp.cat/lb0/CZ_JOJ_Cinema_plus_1_HD/video.m3u8?token=swU4GrKaz
@@ -1037,8 +1037,6 @@ http://lb.wisp.cat/lb0/Canal_plus_Sport_CZ/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/English_Class_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Болгарія" tvg-id="BG_agrotvhd",Agro TV
 http://lb.wisp.cat/lb0/BG_AgroTV/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-id="",KINOEROTICA HD
-http://lb.wisp.cat/lb0/KINOEROTICA_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Пізнавальні" catchup-days="3" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/562.png" tvg-id="v-mire-zhivotnyx-hd",В мире животных HD
 http://lb.wisp.cat/lb0/AnimalFamelyHD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Пізнавальні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/795.png" tvg-id="galaxy-tv",Galaxy
@@ -1091,7 +1089,7 @@ http://lb.wisp.cat/lb0/dw_deutsch_SD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/CZ_PaprikaTV_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Телеканали 4K" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/210.png" tvg-id="insight-ultra-hd",Insight UHD
 http://lb.wisp.cat/lb0/DE_INSIGHT_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Спортивні" tvg-id="tennis-cnl-us",Tennis Channel HD
+#EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/133.png" tvg-id="tennis-cnl-us",Tennis Channel HD
 http://lb.wisp.cat/lb0/Tennis_Channel_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1109.png" tvg-id="motorvision-p-de",MOTORVISION +
 http://lb.wisp.cat/lb0/MOTORVISION_plus/video.m3u8?token=swU4GrKaz
@@ -1175,44 +1173,22 @@ http://lb.wisp.cat/lb0/SDI_TV8_HD_LITHUANIA/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/LIUKS/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1047.png" tvg-id="",Tavo TV
 http://lb.wisp.cat/lb0/TavoTV/index.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/793.png" tvg-id="erox",Erox
-http://lb.wisp.cat/lb0/Erox/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Італія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1114.png" tvg-id="",Rai 4K
 http://lb.wisp.cat/lb0/IT_RAI_4K/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/970.png" tvg-id="brazzers-tv-europe-ru",BrazzersTV Europe
-http://lb.wisp.cat/lb0/PL_Brazzers_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/968.png" tvg-id="redlight-hd",Redlight HD
-http://lb.wisp.cat/lb0/RedlightHD/index.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/990.png" tvg-id="prime-fight",Prime Fight HD
 http://lb.wisp.cat/lb0/PRIME_FIGHT_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/739.png" tvg-id="kino-1",Kino 1 HD
 http://lb.wisp.cat/lb0/Kino_1_HDUA/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/663.png" tvg-id="arena-premium-1",Arena Sport Premium 1 HD
 http://lb.wisp.cat/lb0/Arena_Sport_Premium_1/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/595.png" tvg-id="hustler-hd",Hustler HD
-http://lb.wisp.cat/lb0/PL_Hustler_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/574.png" tvg-id="penthouse-quickies",Penthouse Reality HD
-http://lb.wisp.cat/lb0/XXX_PENTHOUSE_QUICKIES/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2337.png" tvg-id="cz_channel:filmbox",FilmBox HD CZ
 http://lb.wisp.cat/lb0/CZ_Filmbox_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/372.png" tvg-id="playboy-tv",Playboy TV
-http://lb.wisp.cat/lb0/PlayboyTV_SD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/662.png" tvg-id="babes-tv",Babes TV HD
-http://lb.wisp.cat/lb0/BABES_TV_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/626.png" tvg-id="shalun",Шалун HD
-http://lb.wisp.cat/lb0/shalunhd/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/573.png" tvg-id="penthouse-gold",Penthouse Gold HD
-http://lb.wisp.cat/lb0/XXX_PENTHOUSE_GOLD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/373.png" tvg-id="barely-legal",Barely Legal TV
-http://lb.wisp.cat/lb0/Barely_legal/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/370.png" tvg-id="sk_channel:joj_sport",JOJ Sport HD CZ
 http://lb.wisp.cat/lb0/CZ_JOJ_SPORT_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Телеканали 4K" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1216.png" tvg-id="russian-extreme-uhd",ULTRA REX
 http://lb.wisp.cat/lb0/ULTRAREX/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/398.png" tvg-id="shot-tv",Shot TV
 http://lb.wisp.cat/lb0/ShotTV/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/982.png" tvg-id="dorcel",Dorcel
-http://lb.wisp.cat/lb0/BG_Dorcel/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1281.png" tvg-id="canal-pl-sport-6-cz",Canal+ Sport 6 CZ
 http://lb.wisp.cat/lb0/Canal_plus_Sport_6_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Болгарія" tvg-id="BG_8-cinemax-hd",Cinemax BG
@@ -1229,7 +1205,7 @@ http://lb.wisp.cat/lb0/CineMan_Uzasy/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/BG_Code_Health/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" catchup-days="3" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1126.png" tvg-id="tvplay-sports-plus",Go3 Sport 2 HD
 http://lb.wisp.cat/lb0/SDI_TVPLAY_SPORTS_PLUS/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Фільмові" tvg-id="2712-khit-boyovik-hd",Хіт Бойовик HD
+#EXTINF:-1 group-title="Фільмові" tvg-id="2712-khit-boiovk-hd",Хіт Бойовик HD
 http://lb.wisp.cat/lb0/Xit_Boevik_UA/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Фільмові" catchup-days="5" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1129.png" tvg-id="kinouzhas",Киноужас HD
 http://lb.wisp.cat/lb0/KinouzasHD/video.m3u8?token=swU4GrKaz
@@ -1375,8 +1351,6 @@ http://lb.wisp.cat/lb0/PL_wPolsce_pl/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/CZ_TravelCh_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1227.png" tvg-id="cbc-sport",CBC Sport HD
 http://lb.wisp.cat/lb0/CBCSportHD_GE/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/969.png" tvg-id="private-tv",Private HD
-http://lb.wisp.cat/lb0/Private_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Пізнавальні" catchup-days="5" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1282.png" tvg-id="viasat-nature-cee",Viasat Nature HD CEE
 http://lb.wisp.cat/lb0/Viasat_Nature_HD_CEE/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Музичні" tvg-id="",BG Music
@@ -1549,10 +1523,6 @@ http://lb.wisp.cat/lb0/W9_HD_FR/index.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/BG_Diema_HD/index.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Україна" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1309.png" tvg-id="",Візит HD
 http://lb.wisp.cat/lb0/Vizit_HD/index.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Болгарія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1308.png" tvg-id="",Диема
-http://lb.wisp.cat/lb0/BG_Diema/index.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Болгарія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1307.png" tvg-id="",Diema Family
-http://lb.wisp.cat/lb0/BG_Diema_Family/index.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" catchup-days="5" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1306.png" tvg-id="BG_diema-sport-3",Diema Sport 3 HD
 http://lb.wisp.cat/lb0/DIEMA_SPORT_3_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1305.png" tvg-id="setanta2-lt",Setanta Sports 2 HD Baltic
@@ -1613,8 +1583,6 @@ http://lb.wisp.cat/lb0/Kino_Family_HD/index.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/BG_Skat/index.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Болгарія" tvg-id="",Star BG
 http://lb.wisp.cat/lb0/BG_STAR_Channel/index.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Болгарія" tvg-id="",Kino Nova
-http://lb.wisp.cat/lb0/BG_KINO_NOVA/index.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Музичні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1349.png" tvg-id="",Magic TV
 http://lb.wisp.cat/lb0/BG_MagicTV/index.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Болгарія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1348.png" tvg-id="",National Geographic Wild BG
@@ -1661,7 +1629,7 @@ http://lb.wisp.cat/lb0/BG_The_Voice/index.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/BG_Tiyankov_Folk/index.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Болгарія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1370.png" tvg-id="BG_108-travel-channel-hd",Travel Channel BG
 http://lb.wisp.cat/lb0/BG_Travel_Channel/index.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Спортивні" tvg-id="",Eurosport 3 HD Polska
+#EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1369.png" tvg-id="eurosport-3-pl",Eurosport 3 HD Polska
 http://lb.wisp.cat/lb0/Eurosport_3_PL/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Болгарія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1368.png" tvg-id="BG_btv",bTV
 http://lb.wisp.cat/lb0/BG_bTV/index.m3u8?token=swU4GrKaz
@@ -1853,8 +1821,6 @@ http://lb.wisp.cat/lb0/NickJrPL/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/PL_NICKELODEON/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" catchup-days="5" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1487.png" tvg-id="BG_diema-sport",Diema Sport HD
 http://lb.wisp.cat/lb0/DIEMA_SPORT_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1486.png" tvg-id="",PLAYBOY TV HD
-http://lb.wisp.cat/lb0/PLAYBOYTVHD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Музичні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1490.png" tvg-id="POWER TV",Power TV
 http://lb.wisp.cat/lb0/PL_Power_TV/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Польща" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1494.png" tvg-id="Paramount Channel",Paramount Channel HD Polska
@@ -1967,8 +1933,6 @@ http://lb.wisp.cat/lb0/PL_WP/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/PL_Polsat_Sport_Premium_2/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1655.png" tvg-id="q-football-kz",Q Football HD
 http://lb.wisp.cat/lb0/Q_Football_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1657.png" tvg-id="extasy4k",Extasy 4K
-http://lb.wisp.cat/lb0/EXTASY4K/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-id="BG_auto-motor-sporthd",Auto Moto Sports
 http://lb.wisp.cat/lb0/BG_AutoMotoSports/index.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Болгарія" tvg-id="",SkyShowtime 1 BG
@@ -1983,8 +1947,6 @@ http://lb.wisp.cat/lb0/Comedy_AR/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/CZ_PRIMA_ZOOM_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1731.png" tvg-id="cz_channel:nova_sport2",Nova Sport 2 HD CZ
 http://lb.wisp.cat/lb0/CZ_NOVA_SPORT2_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2777.png" tvg-id="",Clarity4K Angel XXX
-http://lb.wisp.cat/lb0/Clarity4K_Angel_XXX/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Телеканали 4K" tvg-id="",Clarity4k Concert
 http://lb.wisp.cat/lb0/Clarity4k_Concert/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Телеканали 4K" tvg-id="",Clarity4K Ukrainian music
@@ -2163,7 +2125,7 @@ http://lb.wisp.cat/lb0/Scream/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/In_Rating_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Фільмові" catchup-days="5" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1666.png" tvg-id="tv1000-cee",Viasat Kino HD
 http://lb.wisp.cat/lb0/TV_1000_HD_CEE/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1667.png" tvg-id="",Žvaigždė TV
+#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1667.png" tvg-id="zvaigzde-lt",Žvaigždė TV
 http://lb.wisp.cat/lb0/Zvaigzde_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Дитячі" catchup-days="5" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1671.png" tvg-id="cine-plus-kids",Cine+ Kids HD
 http://lb.wisp.cat/lb0/CINE_KIDS_HD_LW/video.m3u8?token=swU4GrKaz
@@ -2245,7 +2207,7 @@ http://lb.wisp.cat/lb0/Sci_fi_HD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/Kino7_EE_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Вірменія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1830.png" tvg-id="shant-serial-hd",Shant Serial HD
 http://lb.wisp.cat/lb0/ShantSerialHD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1831.png" tvg-id="",ALO TV
+#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1831.png" tvg-id="alo-ee",ALO TV
 http://lb.wisp.cat/lb0/ALO_TV_EE/index.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Вірменія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1832.png" tvg-id="shant-music-hd",Shant Music HD
 http://lb.wisp.cat/lb0/ShantMusicHD/video.m3u8?token=swU4GrKaz
@@ -2289,16 +2251,12 @@ http://lb.wisp.cat/lb0/CZ_Relax_TV/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/30436/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1748.png" tvg-id="dynamo-kyiv-tv",Dynamo Kyiv TV HD
 http://lb.wisp.cat/lb0/Dynamo_Kiev_HD/index.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1749.png" tvg-id="blue-hustler-ua",Blue Hustler Europe
-http://lb.wisp.cat/lb0/Blue_Hustler_Europe/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Болгарія" tvg-id="",БНТ 3 HD
 http://lb.wisp.cat/lb0/BG_BNT3_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Болгарія" tvg-id="",БНТ 2
 http://lb.wisp.cat/lb0/BG_BNT2/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1752.png" tvg-id="cz_channel:nickjr",Nick  Jr CZ
 http://lb.wisp.cat/lb0/CZ_Nick_Jr/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1754.png" tvg-id="",PureBabes HD
-http://lb.wisp.cat/lb0/Pure_Babes_HD_SW/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Дитячі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1755.png" tvg-id="tiptop",Тип Топ HD
 http://lb.wisp.cat/lb0/TIP_TOP_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Дитячі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1756.png" tvg-id="bubokko-tv",БубОкко ТВ
@@ -2375,8 +2333,6 @@ http://lb.wisp.cat/lb0/Yossokids/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/YOSSO-MUSIC-HITS/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1792.png" tvg-id="yosso-newkino",YOSSO TV NEW Кино
 http://lb.wisp.cat/lb0/YOSSO-NEW/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1793.png" tvg-id="yosso-sexy",YOSSO TV SEXY
-http://lb.wisp.cat/lb0/YOSSO_TV_SEXY/index.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1794.png" tvg-id="yosso-vhs",YOSSO TV VHS
 http://lb.wisp.cat/lb0/YOSSOVHS/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1796.png" tvg-id="yosso-sovfilm",YOSSO TV Советские фильмы
@@ -2391,11 +2347,9 @@ http://lb.wisp.cat/lb0/Eesti_kanal_HD_test/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/Eurosport_1_HD_CEE/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" catchup-days="5" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1807.png" tvg-id="eurosport2",Eurosport 2 HD CEE
 http://lb.wisp.cat/lb0/Eurosport_2_HD_CEE/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1844.png" tvg-id="",XY MIX
-http://lb.wisp.cat/lb0/XY_MIX_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Розважальні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1845.png" tvg-id="",Гумор+ HD
 http://lb.wisp.cat/lb0/Gumor_plus/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1846.png" tvg-id="",Star Cinema HD LV
+#EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1846.png" tvg-id="star-cinema-eu",Star Cinema HD LV
 http://lb.wisp.cat/lb0/Star_Cinema_HD_LV/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1847.png" tvg-id="yosso-zabavno",YOSSO TV Забавное
 http://lb.wisp.cat/lb0/YOSSO-ZABAVNOE/index.m3u8?token=swU4GrKaz
@@ -2433,8 +2387,6 @@ http://lb.wisp.cat/lb0/BCUSurvivalHD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/France_3_FR/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Музичні" tvg-id="",POP Star
 http://lb.wisp.cat/lb0/POP_Star/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1866.png" tvg-id="",XY MAX
-http://lb.wisp.cat/lb0/XY_MAX_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Вірменія" tvg-id="",Shant Kids HD
 http://lb.wisp.cat/lb0/ShantKidsHD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1868.png" tvg-id="cz_channel:prima_star",Prima Star HD CZ
@@ -2515,16 +2467,12 @@ http://lb.wisp.cat/lb0/Travelxp_HD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/KHL_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Україна" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1911.png" tvg-id="dom",Дiм
 http://lb.wisp.cat/lb0/DOM_UA/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1920.png" tvg-id="blue-hustler",Blue Hustler
-http://lb.wisp.cat/lb0/Blue_Hustler/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1921.png" tvg-id="spor-smart-tr",SPORSMART 1 HD
 http://lb.wisp.cat/lb0/TR_SPORSMART/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Пізнавальні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1922.png" tvg-id="",Wild TV
 http://lb.wisp.cat/lb0/Wild_TV/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Трансляції" tvg-id="",Волейбол Sub 1
 http://lb.wisp.cat/lb0/KS_Voleibol_Sub_1/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1931.png" tvg-id="brazzers-tv-europe",Brazzers HD
-http://lb.wisp.cat/lb0/PL_Brazzers_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Розважальні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1926.png" tvg-id="fuel-tv-hd",Fuel
 http://lb.wisp.cat/lb0/FUEL_TV/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Розважальні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/1927.png" tvg-id="gags-network",Gags Network
@@ -2727,7 +2675,7 @@ http://lb.wisp.cat/lb0/Sport4_HD_IL/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/Sport5_HD_IL/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2036.png" tvg-id="5sport-plus-il",Sport 5 Plus HD IL
 http://lb.wisp.cat/lb0/Sport5plus_HD_IL/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2037.png" tvg-id="",Seimas tiesiogiai LT
+#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2037.png" tvg-id="seimas-tiesiogiai-lt",Seimas tiesiogiai LT
 http://lb.wisp.cat/lb0/Seimas_tiesiogiai/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Італія" tvg-id="",Realtime Italy
 http://lb.wisp.cat/lb0/IT_Realtime_Italy/video.m3u8?token=swU4GrKaz
@@ -2759,7 +2707,7 @@ http://lb.wisp.cat/lb0/IT_Italia1_HD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/France_4_FR/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Зарубіжні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2054.png" tvg-id="",France 5
 http://lb.wisp.cat/lb0/France_5_FR/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Музичні" tvg-id="",Music Box Classic
+#EXTINF:-1 group-title="Музичні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2055.png" tvg-id="musicbox-classic",Music Box Classic
 http://lb.wisp.cat/lb0/Music_Box_Classic/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Кінозали" tvg-id="",Joker: Темний плащ
 http://lb.wisp.cat/lb0/jk_black_cloak/video.m3u8?token=swU4GrKaz
@@ -2825,7 +2773,7 @@ http://lb.wisp.cat/lb0/NRJ_Hits_FR/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/jk_csi_NY/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Кінозали" tvg-id="",Joker:  Футурама
 http://lb.wisp.cat/lb0/jk_futurama/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2089.png" tvg-id="",Inspira HD Eesti
+#EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2089.png" tvg-id="inspira-ee",Inspira HD Eesti
 http://lb.wisp.cat/lb0/Inspira_HD_EE_test/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2090.png" tvg-id="youtv_kino-serial-plus-hd",Кіно та серіали+ HD
 http://lb.wisp.cat/lb0/Kinotaserialy_plus/video.m3u8?token=swU4GrKaz
@@ -2881,7 +2829,7 @@ http://lb.wisp.cat/lb0/TNT_Exclusive_MD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/Canal_plua_Extra_3/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2128.png" tvg-id="Canal+ Extra 2",Canal+ Extra 2
 http://lb.wisp.cat/lb0/Canal_plua_Extra_2/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Фільмові" tvg-id="",Ужасы HD
+#EXTINF:-1 group-title="Фільмові" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2129.png" tvg-id="zal-19-tricolor",Ужасы HD
 http://lb.wisp.cat/lb0/uzasi_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" catchup-days="1" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2130.png" tvg-id="prima-sport-1",Prima Sport 1 HD
 http://lb.wisp.cat/lb0/TelekomSport1HDRO/video.m3u8?token=swU4GrKaz
@@ -2919,8 +2867,6 @@ http://lb.wisp.cat/lb0/foxlife_sd_tv/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/TR_HABERPGM/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2278.png" tvg-id="a-spor-tr",A SPOR HD
 http://lb.wisp.cat/lb0/TR_ASPORHD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-id="",CineMan ExExEx TWO
-http://lb.wisp.cat/lb0/CineManExExEx_TWO/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Кінозали" tvg-id="",Joker: Як я зустрів вашу маму
 http://lb.wisp.cat/lb0/jk_Your_mother/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2282.png" tvg-id="nova-sport3-cz",Nova Sport 3 HD CZ
@@ -3149,8 +3095,6 @@ http://lb.wisp.cat/lb0/CinemanKids4K/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/Sportdigital1_plus/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Туреччина" tvg-id="",Minika COCUK
 http://lb.wisp.cat/lb0/TR_minikaCOCUK/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-id="",CineMan ExExEx
-http://lb.wisp.cat/lb0/CineManExExEx/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Туреччина" tvg-id="",TV 100 HD
 http://lb.wisp.cat/lb0/TR_100HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Трансляції" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2297.png" tvg-id="",Event 1
@@ -3171,7 +3115,7 @@ http://lb.wisp.cat/lb0/jk_Cartoon/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/TR_TRTHABERHD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Кінозали" tvg-id="",Infinity: Топ Гир
 http://lb.wisp.cat/lb0/inf_Top_Gear/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Туреччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2308.png" tvg-id="",TRT Muzik HD
+#EXTINF:-1 group-title="Туреччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2308.png" tvg-id="trt-muzik-tr",TRT Muzik HD
 http://lb.wisp.cat/lb0/TR_TRTMUZIKHD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2309.png" tvg-id="trt-3-hd",TRT Sport HD
 http://lb.wisp.cat/lb0/TR_TRTSPORTHD/video.m3u8?token=swU4GrKaz
@@ -3281,7 +3225,7 @@ http://lb.wisp.cat/lb0/jk_Dexter/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/Sfera_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2391.png" tvg-id="cz_channel:Minimax",Minimax CZ
 http://lb.wisp.cat/lb0/CZ_MINIMAX/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Спортивні" tvg-id="",Fight Club HD
+#EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2392.png" tvg-id="fightclub",Fight Club HD
 http://lb.wisp.cat/lb0/Fight_Club_HD_SM/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Туреччина" tvg-id="",TV 4HD TR
 http://lb.wisp.cat/lb0/TV4_HD_TR/video.m3u8?token=swU4GrKaz
@@ -3361,12 +3305,10 @@ http://lb.wisp.cat/lb0/DE_Sky_Sport_Tennis_HD/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/DE_Sky_Sport_F1/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2443.png" tvg-id="cz_channel:Seznam",Televize Seznam HD CZ
 http://lb.wisp.cat/lb0/Seznam_CZ/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Телеканали 4K" tvg-id="",V Sport Ultra HD
+#EXTINF:-1 group-title="Телеканали 4K" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2448.png" tvg-id="v-sport-ultrahd",V Sport Ultra HD
 http://lb.wisp.cat/lb0/Viasat_Ultra_UHD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Спортивні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2449.png" tvg-id="s-sport-tr",S Sport HD
 http://lb.wisp.cat/lb0/TR_S_Sport_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" catchup-days="1" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2450.png" tvg-id="bcu-charm",BCU Charm HD
-http://lb.wisp.cat/lb0/BCU_Charm_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Азербайджан" tvg-id="",Medeniyyet
 http://lb.wisp.cat/lb0/Medeniyyet_AZ/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Литва/Латвія/Естонія" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2454.png" tvg-id="riga-tv24",Riga TV24 HD
@@ -3379,8 +3321,6 @@ http://lb.wisp.cat/lb0/jk_Heroes/video.m3u8?token=swU4GrKaz
 http://lb.wisp.cat/lb0/love/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Дитячі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2466.png" tvg-id="familyjam",FamilyJam HD
 http://lb.wisp.cat/lb0/FamelyJam_HD/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2826.png" tvg-id="",XY PLUS
-http://lb.wisp.cat/lb0/XY_PLUS_HD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Зарубіжні" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2461.png" tvg-id="",TRT World
 http://lb.wisp.cat/lb0/TRT_World/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Чехія/Словаччина" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2462.png" tvg-id="cz_channel:primafamily",Prima HD CZ
@@ -3729,8 +3669,6 @@ http://lb.wisp.cat/lb0/KinoPremiere_HD_GFFVdfBF56FGVVFDBCfv/video.m3u8?token=swU
 http://lb.wisp.cat/lb0/KinoAction_HD_FBlkJHQWXCcsEFFVXD/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Фільмові" catchup-days="5" catchup-type="flussonic" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2760.png" tvg-id="1456-kino-comedy-hd",Kino Comedy HD
 http://lb.wisp.cat/lb0/KinoComedy_HD_VDFssaxxWRD56FGaqqZ/video.m3u8?token=swU4GrKaz
-#EXTINF:-1 group-title="Дорослі" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2761.png" tvg-id="sholk",Шёлк
-http://lb.wisp.cat/lb0/shelk/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Україна" tvg-logo="https://img.tvoetv.io/stalker_portal/misc/logos/original/2764.png" tvg-id="superplus",Super+ HD
 http://lb.wisp.cat/lb0/Super_plus_HD_UA/video.m3u8?token=swU4GrKaz
 #EXTINF:-1 group-title="Трансляції" tvg-id="",Magenta Sport 12 myTeamTV
