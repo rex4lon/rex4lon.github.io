@@ -128,10 +128,10 @@
         var s = getSettings();
         if (!s.url || !s.token) return Lampa.Noty.show('Налаштуйте Jellyfin у налаштуваннях');
 
-        var tmdbId = movie.id || movie.tmdb_id;
-        var targetTitle = (movie.title || movie.name || movie.original_title || '').toLowerCase().trim();
+        var tmdbId = String(movie.id || movie.tmdb_id || '');
+        var imdbId = String(movie.imdb_id || movie.imdb || '');
 
-        Lampa.Noty.show('Шукаємо відповідний файл...');
+        Lampa.Noty.show('Шукаємо у медіатеці Jellyfin...');
 
         $.ajax({
             url: s.url + '/Users?api_key=' + s.token,
@@ -141,69 +141,49 @@
                 if (!users || users.length === 0) return Lampa.Noty.show('Користувачів Jellyfin не знайдено');
                 var userId = users[0].Id;
 
-                var searchUrl = s.url + '/Users/' + userId + '/Items?Recursive=true&IncludeItemTypes=Movie,Series,Episode&AnyProviderIdEquals=tmdb.' + tmdbId + '&Fields=Path&api_key=' + s.token;
-
+                // Пошук по TMDB ID
                 $.ajax({
-                    url: searchUrl,
+                    url: s.url + '/Users/' + userId + '/Items?Recursive=true&IncludeItemTypes=Movie,Series&Fields=ProviderIds,Path&AnyProviderIdEquals=tmdb.' + tmdbId + '&api_key=' + s.token,
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
-                        if (data && data.Items && data.Items.length > 0) {
-                            var foundItem = null;
+                        var foundItem = null;
 
+                        if (data && data.Items && data.Items.length > 0) {
+                            // Точний збіг по TMDB ID
                             for (var i = 0; i < data.Items.length; i++) {
-                                var item = data.Items[i];
-                                if (item.ProviderIds && item.ProviderIds.Tmdb && String(item.ProviderIds.Tmdb) === String(tmdbId)) {
-                                    foundItem = item;
+                                if (data.Items[i].ProviderIds && String(data.Items[i].ProviderIds.Tmdb) === tmdbId) {
+                                    foundItem = data.Items[i];
                                     break;
                                 }
                             }
+                            if (!foundItem) foundItem = data.Items[0];
+                        }
 
-                            if (!foundItem) {
-                                for (var j = 0; j < data.Items.length; j++) {
-                                    var item2 = data.Items[j];
-                                    var jTitle = (item2.Name || '').toLowerCase().trim();
-                                    if (jTitle === targetTitle) {
-                                        foundItem = item2;
-                                        break;
+                        if (foundItem) {
+                            openItem(foundItem, userId, s);
+                            return;
+                        }
+
+                        // Fallback: пошук по IMDB ID
+                        if (imdbId && imdbId !== 'undefined' && imdbId !== '') {
+                            $.ajax({
+                                url: s.url + '/Users/' + userId + '/Items?Recursive=true&IncludeItemTypes=Movie,Series&Fields=ProviderIds,Path&AnyProviderIdEquals=imdb.' + imdbId + '&api_key=' + s.token,
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function (d2) {
+                                    if (d2 && d2.Items && d2.Items.length > 0) {
+                                        openItem(d2.Items[0], userId, s);
+                                    } else {
+                                        Lampa.Noty.show('Цього відео немає у вашій медіатеці Jellyfin');
                                     }
+                                },
+                                error: function () {
+                                    Lampa.Noty.show('Помилка пошуку файлів');
                                 }
-                            }
-
-                            if (foundItem) {
-                                if (foundItem.Type === 'Series') {
-                                    $.ajax({
-                                        url: s.url + '/Shows/' + foundItem.Id + '/Episodes?userId=' + userId + '&Fields=Path&api_key=' + s.token,
-                                        type: 'GET',
-                                        dataType: 'json',
-                                        success: function (epData) {
-                                            if (epData && epData.Items && epData.Items.length > 0) {
-                                                var episodes = epData.Items.map(function (ep) {
-                                                    return {
-                                                        title: 'S' + (ep.ParentIndexNumber || 1) + ' E' + (ep.IndexNumber || 1) + ' - ' + (ep.Name || 'Episode'),
-                                                        jellyId: ep.Id
-                                                    };
-                                                });
-
-                                                Lampa.Select.show({
-                                                    title: 'Оберіть серію',
-                                                    items: episodes,
-                                                    onSelect: function (sel) {
-                                                        startPlayer(sel.jellyId, sel.title, s.url, s.token);
-                                                    },
-                                                    onBack: function () { Lampa.Controller.toggle('full_start'); }
-                                                });
-                                            } else { Lampa.Noty.show('Серій не знайдено'); }
-                                        }
-                                    });
-                                } else {
-                                    startPlayer(foundItem.Id, foundItem.Name, s.url, s.token);
-                                }
-                            } else {
-                                Lampa.Noty.show('Цього відео немає у вашій медіатеці Jellyfin');
-                            }
+                            });
                         } else {
-                            Lampa.Noty.show('Бібліотека сервера порожня');
+                            Lampa.Noty.show('Цього відео немає у вашій медіатеці Jellyfin');
                         }
                     },
                     error: function () { Lampa.Noty.show('Помилка пошуку файлів'); }
@@ -212,6 +192,39 @@
             error: function () { Lampa.Noty.show('Помилка авторизації на сервері'); }
         });
     }
+
+    function openItem(foundItem, userId, s) {
+        if (foundItem.Type === 'Series') {
+            $.ajax({
+                url: s.url + '/Shows/' + foundItem.Id + '/Episodes?userId=' + userId + '&Fields=Path&api_key=' + s.token,
+                type: 'GET',
+                dataType: 'json',
+                success: function (epData) {
+                    if (epData && epData.Items && epData.Items.length > 0) {
+                        var episodes = epData.Items.map(function (ep) {
+                            return {
+                                title: 'S' + (ep.ParentIndexNumber || 1) + ' E' + (ep.IndexNumber || 1) + ' - ' + (ep.Name || 'Episode'),
+                                jellyId: ep.Id
+                            };
+                        });
+                        Lampa.Select.show({
+                            title: 'Оберіть серію',
+                            items: episodes,
+                            onSelect: function (sel) {
+                                startPlayer(sel.jellyId, sel.title, s.url, s.token);
+                            },
+                            onBack: function () { Lampa.Controller.toggle('full_start'); }
+                        });
+                    } else {
+                        Lampa.Noty.show('Серій не знайдено');
+                    }
+                }
+            });
+        } else {
+            startPlayer(foundItem.Id, foundItem.Name, s.url, s.token);
+        }
+    }
+
 
     // =====================================================================
     // 4. КНОПКА В КАРТЦІ ФІЛЬМУ
