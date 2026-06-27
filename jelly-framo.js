@@ -1,9 +1,6 @@
 (function () {
     'use strict';
 
-    var DEFAULT_SERVER = 'https://jellyfin.framo.fun';
-    var DEFAULT_TOKEN  = '7f403065f6ba4fdab6b7e248a0c23786';
-
     // =====================================================================
     // 1. НАЛАШТУВАННЯ
     // =====================================================================
@@ -18,9 +15,9 @@
         param: {
             name: 'jellyfin_nas_server',
             type: 'input',
-            placeholder: DEFAULT_SERVER,
+            placeholder: 'https://jellyfin.framo.fun',
             values: '',
-            default: DEFAULT_SERVER
+            default: 'https://jellyfin.framo.fun'
         },
         field: {
             name: 'Адреса сервера Jellyfin',
@@ -33,9 +30,9 @@
         param: {
             name: 'jellyfin_nas_token',
             type: 'input',
-            placeholder: DEFAULT_TOKEN,
+            placeholder: '7f403065f6ba4fdab6b7e248a0c23786',
             values: '',
-            default: DEFAULT_TOKEN
+            default: '7f403065f6ba4fdab6b7e248a0c23786'
         },
         field: {
             name: 'API Ключ',
@@ -57,10 +54,10 @@
 
     // Встановлюємо дефолтні значення якщо ще не збережені
     if (!Lampa.Storage.get('jellyfin_nas_server', '')) {
-        Lampa.Storage.set('jellyfin_nas_server', DEFAULT_SERVER);
+        Lampa.Storage.set('jellyfin_nas_server', 'https://jellyfin.framo.fun');
     }
     if (!Lampa.Storage.get('jellyfin_nas_token', '')) {
-        Lampa.Storage.set('jellyfin_nas_token', DEFAULT_TOKEN);
+        Lampa.Storage.set('jellyfin_nas_token', '7f403065f6ba4fdab6b7e248a0c23786');
     }
 
     Lampa.Settings.listener.follow('open', function (e) {
@@ -69,8 +66,8 @@
             checkBtn.find('.settings-param__name').css('color', '#00ff00');
 
             checkBtn.off('hover:enter click').on('hover:enter click', function () {
-                var url   = Lampa.Storage.get('jellyfin_nas_server', DEFAULT_SERVER).replace(/\/$/, '').trim();
-                var token = Lampa.Storage.get('jellyfin_nas_token', DEFAULT_TOKEN).trim();
+                var url = Lampa.Storage.get('jellyfin_nas_server', 'https://jellyfin.framo.fun').replace(/\/$/, '').trim();
+                var token = Lampa.Storage.get('jellyfin_nas_token', '7f403065f6ba4fdab6b7e248a0c23786').trim();
 
                 if (!url || !token) {
                     Lampa.Noty.show('Спочатку введіть адресу та ключ!');
@@ -105,7 +102,7 @@
     function startPlayer(id, title, url, token) {
         var streamUrl = url + '/Items/' + id + '/Download?api_key=' + token;
 
-        console.log('Jellyfin: відкриваємо посилання:', streamUrl);
+        console.log('Надсилання прямого посилання в плеєр:', streamUrl);
         Lampa.Noty.show('Відкриваємо плеєр...');
 
         var video = {
@@ -122,8 +119,8 @@
     // =====================================================================
     function getSettings() {
         return {
-            url:   Lampa.Storage.get('jellyfin_nas_server', DEFAULT_SERVER).replace(/\/$/, '').trim(),
-            token: Lampa.Storage.get('jellyfin_nas_token', DEFAULT_TOKEN).trim()
+            url: Lampa.Storage.get('jellyfin_nas_server', 'https://jellyfin.framo.fun').replace(/\/$/, '').trim(),
+            token: Lampa.Storage.get('jellyfin_nas_token', '7f403065f6ba4fdab6b7e248a0c23786').trim()
         };
     }
 
@@ -140,7 +137,6 @@
             url: s.url + '/Users?api_key=' + s.token,
             type: 'GET',
             dataType: 'json',
-            timeout: 10000,
             success: function (users) {
                 if (!users || users.length === 0) return Lampa.Noty.show('Користувачів Jellyfin не знайдено');
                 var userId = users[0].Id;
@@ -150,11 +146,11 @@
                     url: s.url + '/Users/' + userId + '/Items?Recursive=true&IncludeItemTypes=Movie,Series&Fields=ProviderIds,Path&AnyProviderIdEquals=tmdb.' + tmdbId + '&api_key=' + s.token,
                     type: 'GET',
                     dataType: 'json',
-                    timeout: 10000,
                     success: function (data) {
                         var foundItem = null;
 
                         if (data && data.Items && data.Items.length > 0) {
+                            // Точний збіг по TMDB ID
                             for (var i = 0; i < data.Items.length; i++) {
                                 if (data.Items[i].ProviderIds && String(data.Items[i].ProviderIds.Tmdb) === tmdbId) {
                                     foundItem = data.Items[i];
@@ -175,7 +171,6 @@
                                 url: s.url + '/Users/' + userId + '/Items?Recursive=true&IncludeItemTypes=Movie,Series&Fields=ProviderIds,Path&AnyProviderIdEquals=imdb.' + imdbId + '&api_key=' + s.token,
                                 type: 'GET',
                                 dataType: 'json',
-                                timeout: 10000,
                                 success: function (d2) {
                                     if (d2 && d2.Items && d2.Items.length > 0) {
                                         openItem(d2.Items[0], userId, s);
@@ -184,7 +179,7 @@
                                     }
                                 },
                                 error: function () {
-                                    Lampa.Noty.show('Помилка пошуку за IMDB ID');
+                                    Lampa.Noty.show('Помилка пошуку файлів');
                                 }
                             });
                         } else {
@@ -204,7 +199,6 @@
                 url: s.url + '/Shows/' + foundItem.Id + '/Episodes?userId=' + userId + '&Fields=Path&api_key=' + s.token,
                 type: 'GET',
                 dataType: 'json',
-                timeout: 10000,
                 success: function (epData) {
                     if (epData && epData.Items && epData.Items.length > 0) {
                         var episodes = epData.Items.map(function (ep) {
@@ -224,15 +218,13 @@
                     } else {
                         Lampa.Noty.show('Серій не знайдено');
                     }
-                },
-                error: function () {
-                    Lampa.Noty.show('Помилка завантаження списку серій');
                 }
             });
         } else {
             startPlayer(foundItem.Id, foundItem.Name, s.url, s.token);
         }
     }
+
 
     // =====================================================================
     // 4. КНОПКА В КАРТЦІ ФІЛЬМУ
@@ -275,11 +267,11 @@
     // 6. КОМПОНЕНТ КАТАЛОГУ
     // =====================================================================
     function JellyfinCatalog(object) {
-        var scroll  = new Lampa.Scroll({ mask: true, over: true });
-        var files   = [];
-        var html    = $('<div></div>');
-        var body    = $('<div class="category-full"></div>');
-        var _this   = this;
+        var scroll = new Lampa.Scroll({ mask: true, over: true });
+        var files = [];
+        var html = $('<div></div>');
+        var body = $('<div class="category-full"></div>');
+        var _this = this;
 
         this.activity = object.activity;
 
@@ -299,7 +291,6 @@
                 url: reqUrl,
                 type: 'GET',
                 dataType: 'json',
-                timeout: 15000,
                 success: function (data) {
                     _this.activity.loader(false);
                     if (data && data.Items && data.Items.length > 0) {
@@ -323,33 +314,32 @@
             scroll.append(body);
 
             items.forEach(function (item) {
-                var tmdbId   = (item.ProviderIds && item.ProviderIds.Tmdb) ? item.ProviderIds.Tmdb : null;
-                var type     = item.Type === 'Series' ? 'tv' : 'movie';
-                var year     = item.ProductionYear ? item.ProductionYear + '-01-01' : '';
-                var localImg = url + '/Items/' + item.Id + '/Images/Primary?api_key=' + token;
+                var tmdbId = (item.ProviderIds && item.ProviderIds.Tmdb) ? item.ProviderIds.Tmdb : null;
+                var type = item.Type === 'Series' ? 'tv' : 'movie';
+                var year = item.ProductionYear ? item.ProductionYear + '-01-01' : '';
 
                 var card_data = {
-                    id:             tmdbId || item.Id,
-                    source:         tmdbId ? 'tmdb' : 'jellyfin',
-                    type:           type,
-                    title:          item.Name,
-                    name:           item.Name,
+                    id: tmdbId || item.Id,
+                    source: tmdbId ? 'tmdb' : 'jellyfin',
+                    type: type,
+                    title: item.Name,
+                    name: item.Name,
                     original_title: item.OriginalTitle || item.Name,
-                    release_date:   year,
+                    release_date: year,
                     first_air_date: year,
-                    poster_path:    '',
-                    img:            localImg,
-                    vote_average:   item.CommunityRating || 0
+                    poster_path: '',
+                    img: '',
+                    vote_average: item.CommunityRating || 0
                 };
 
-                var card   = new Lampa.Card(card_data, { card_category: true });
+                var card = new Lampa.Card(card_data, { card_category: true });
                 card.create();
 
                 var cardEl = card.render();
-                cardEl.find('.card__img').attr('src', localImg);
+                cardEl.removeClass('card--preload').addClass('card--loaded');
 
                 if (tmdbId) {
-                    var lang   = Lampa.Storage.get('language', 'uk');
+                    var lang = Lampa.Storage.get('language', 'uk');
                     var apiKey = Lampa.TMDB.key();
                     var tmdbUrl = Lampa.TMDB.api(type + '/' + tmdbId + '?api_key=' + apiKey + '&language=' + lang);
 
@@ -364,10 +354,25 @@
                                 card_data.poster_path = res.poster_path;
                                 card_data.img = secureImg;
                                 cardEl.find('.card__img').attr('src', secureImg);
+                                if (cardEl.hasClass('focus')) {
+                                    Lampa.Background.change(secureImg);
+                                }
+                            } else {
+                                var localUrl = url + '/Items/' + item.Id + '/Images/Primary?api_key=' + token;
+                                card_data.img = localUrl;
+                                cardEl.find('.card__img').attr('src', localUrl);
                             }
+                        },
+                        error: function () {
+                            var localUrl = url + '/Items/' + item.Id + '/Images/Primary?api_key=' + token;
+                            card_data.img = localUrl;
+                            cardEl.find('.card__img').attr('src', localUrl);
                         }
-                        // при помилці залишаємо localImg, який вже встановлений
                     });
+                } else {
+                    var localUrl = url + '/Items/' + item.Id + '/Images/Primary?api_key=' + token;
+                    card_data.img = localUrl;
+                    cardEl.find('.card__img').attr('src', localUrl);
                 }
 
                 cardEl.on('hover:focus', function () {
@@ -378,12 +383,12 @@
 
                 cardEl.on('hover:enter click', function () {
                     Lampa.Activity.push({
-                        url:       '',
+                        url: '',
                         component: 'full',
-                        id:        card_data.id,
-                        method:    card_data.type,
-                        card:      card_data,
-                        source:    card_data.source
+                        id: card_data.id,
+                        method: card_data.type,
+                        card: card_data,
+                        source: card_data.source
                     });
                 });
 
@@ -392,11 +397,15 @@
             });
 
             scroll.onScroll = function () {
-                files.forEach(function (c) { if (c.visible) c.visible(); });
+                files.forEach(function (c) {
+                    if (c.visible) c.visible();
+                });
             };
 
             setTimeout(function () {
-                files.forEach(function (c) { if (c.visible) c.visible(); });
+                files.forEach(function (c) {
+                    if (c.visible) c.visible();
+                });
             }, 100);
 
             Lampa.Controller.add('content', {
@@ -419,10 +428,10 @@
             Lampa.Controller.toggle('content');
         };
 
-        this.render  = function () { return html; };
-        this.start   = function () { Lampa.Controller.toggle('content'); };
-        this.pause   = function () {};
-        this.stop    = function () {};
+        this.render = function () { return html; };
+        this.start = function () { Lampa.Controller.toggle('content'); };
+        this.pause = function () {};
+        this.stop = function () {};
         this.destroy = function () {
             files.forEach(function (card) { card.destroy(); });
             files = [];
