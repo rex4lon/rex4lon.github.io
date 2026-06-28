@@ -351,7 +351,18 @@
             html.append(scroll.render());
             scroll.append(body);
 
+            // Удаляем дубликаты по ID
+            var seenIds = {};
+            var uniqueItems = [];
             items.forEach(function (item) {
+                var itemId = item.Id || item.id;
+                if (!seenIds[itemId]) {
+                    seenIds[itemId] = true;
+                    uniqueItems.push(item);
+                }
+            });
+
+            uniqueItems.forEach(function (item) {
                 var tmdbId = (item.ProviderIds && item.ProviderIds.Tmdb) ? item.ProviderIds.Tmdb : null;
                 var type = item.Type === 'Series' ? 'tv' : 'movie';
                 var year = item.ProductionYear ? item.ProductionYear + '-01-01' : '';
