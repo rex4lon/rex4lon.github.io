@@ -16,7 +16,6 @@
             name: 'jellyfin_nas_server',
             type: 'input',
             placeholder: '',
-            values: 'http://192.168.1.161:8096', 
             default: 'http://192.168.1.161:8096'
         },
         field: {
@@ -31,7 +30,6 @@
             name: 'jellyfin_nas_token',
             type: 'input',
             placeholder: '',
-            values: 'a4393364ae8b45b28f76506cd6b19cd0', 
             default: 'a4393364ae8b45b28f76506cd6b19cd0'
         },
         field: {
