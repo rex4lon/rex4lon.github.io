@@ -351,13 +351,13 @@
             html.append(scroll.render());
             scroll.append(body);
 
-            // Удаляем дубликаты по ID
-            var seenIds = {};
+            // Удаляем дубликаты по названию + типу (для разных версий одного фильма)
+            var seenItems = {};
             var uniqueItems = [];
             items.forEach(function (item) {
-                var itemId = item.Id || item.id;
-                if (!seenIds[itemId]) {
-                    seenIds[itemId] = true;
+                var key = (item.Name || '') + '_' + (item.Type || 'movie');
+                if (!seenItems[key]) {
+                    seenItems[key] = true;
                     uniqueItems.push(item);
                 }
             });
